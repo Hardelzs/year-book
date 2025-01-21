@@ -3,8 +3,15 @@ import { IoSearchSharp } from "react-icons/io5";
 import { FaBookBookmark } from "react-icons/fa6";
 import diaryData from "../data/data.json";
 import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
+
 
 const YearBook = () => {
+  const navigate = useNavigate()
+
+  const handleNavigation = (entryId) => {
+    navigate(`entry/${entryId}`);
+  }
   const [slideIndex, setSlideIndex] = useState(1);
 
   const showSlides = (n) => {
@@ -42,12 +49,12 @@ const YearBook = () => {
   return (
     <div>
       {/* Header Section */}
-      <div className="flex justify-center items-center gap-2 md:gap-52 p-3">
+      <div className="flex justify-center items-center md:gap-52 p-3 bg-red-400">
         {/* Icon and Brand Name */}
         <div className="flex justify-center items-center">
-          <h5>
+          <h1>
             <FaBookBookmark />
-          </h5>
+          </h1>
           <p>YBK</p>
         </div>
         {/* Search Input */}
@@ -84,6 +91,7 @@ const YearBook = () => {
                 className={`flex-shrink-0 w-80 h-60 bg-green-400 justify-center items-center flex mx-auto ${
                   slideIndex === index + 1 ? "scale-110 w-96 h-80" : ""
                 }`}
+                onClick={() => handleNavigation(entry.id)}
               >
                 <h1 className="text-white font-bold text-lg">{entry.text}</h1>
               </div>
