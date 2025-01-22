@@ -9,8 +9,8 @@ import { useNavigate } from 'react-router-dom';
 const YearBook = () => {
   const navigate = useNavigate()
 
-  const handleNavigation = (entryId) => {
-    navigate(`entry/${entryId}`);
+  const handleNavigation = (entry) => {
+    navigate(`/entry/${entry.id}`, { state:{ entry }});
   }
   const [slideIndex, setSlideIndex] = useState(1);
 
@@ -49,7 +49,7 @@ const YearBook = () => {
   return (
     <div>
       {/* Header Section */}
-      <div className="flex justify-center items-center md:gap-52 p-3 bg-red-400">
+      <div className="flex justify-center text-3xl items-center md:gap-52 p-3 bg-red-400">
         {/* Icon and Brand Name */}
         <div className="flex justify-center items-center">
           <h1>
@@ -91,7 +91,7 @@ const YearBook = () => {
                 className={`flex-shrink-0 w-80 h-60 bg-green-400 justify-center items-center flex mx-auto ${
                   slideIndex === index + 1 ? "scale-110 w-96 h-80" : ""
                 }`}
-                onClick={() => handleNavigation(entry.id)}
+                onClick={() => handleNavigation(index)}
               >
                 <h1 className="text-white font-bold text-lg">{entry.text}</h1>
               </div>
