@@ -3,15 +3,35 @@ import { IoSearchSharp } from "react-icons/io5";
 import { FaBookBookmark } from "react-icons/fa6";
 import diaryData from "../data/data.json";
 import { useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate } from "react-router-dom";
 
 const YearBook = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
+
+  
+  const idToComponentMap = {
+    1: "/Year1",
+    2: "/entry",
+    3: "/sandwich",
+    4: "/fun",
+    5: "/diary5",
+    6: "/diary6",
+    7: "/diary7",
+    8: "/diary8",
+  };
 
   const handleNavigation = (entry) => {
-    navigate(`/entry/${entry.id}`, { state:{ entry }});
+    const route = idToComponentMap[entry.id];
+    if(route) {
+      navigate(route);
+    } else {
+      console.error(`No route found for ID: ${entry.id}`);
+      
+    }
   }
+  
+
   const [slideIndex, setSlideIndex] = useState(1);
 
   const showSlides = (n) => {
@@ -82,16 +102,16 @@ const YearBook = () => {
           {/* Diary Entry Display */}
           {diaryData.entries.map((entry, index) => (
             <div
-              key={index}
+              key={entry.id}
               className={`${
                 slideIndex === index + 1 ? "block" : "hidden"
               } text-center`}
             >
               <div
-                className={`flex-shrink-0 w-80 h-60 bg-green-400 justify-center items-center flex mx-auto ${
+                className={`flex-shrink-0 w-80 h-60 bg-green-400 justify-center items-center flex mx-auto cursor-pointer ${
                   slideIndex === index + 1 ? "scale-110 w-96 h-80" : ""
                 }`}
-                onClick={() => handleNavigation(index)}
+                onClick={() => handleNavigation(entry)}
               >
                 <h1 className="text-white font-bold text-lg">{entry.text}</h1>
               </div>
@@ -125,7 +145,7 @@ const YearBook = () => {
                 onClick={() => currentSlide(index + 1)}
               >
                 <div className="w-20 h-12 bg-green-300 flex items-center justify-center">
-                  <span className="text-xs font-bold text-black">{`Entry ${
+                  <span className="text-xs font-bold text-black">{`Year ${
                     index + 1
                   }`}</span>
                 </div>

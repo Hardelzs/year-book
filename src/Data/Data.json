@@ -1,12 +1,12 @@
 {
-    "entries": [
-        { "text": "Entry 1: Hello World" },
-        { "text": "Entry 2: Today was great!" },
-        { "text": "Entry 3: I ate a sandwich!" },
-        { "text": "Entry 4: This is fun!" },
-        { "text": "Entry 5: Diary day 5!" },
-        { "text": "Entry 5: Diary day 5!" },
-        { "text": "Entry 5: Diary day 5!" },
-        { "text": "Entry 5: Diary day 5!" }
-    ]
+  "entries": [
+    { "text": "Hello World", "id": 1 },
+    { "text": "Today was great!", "id" : 2 },
+    { "text": "I ate a sandwich!", "id" : 3 },
+    { "text": "This is fun!", "id" : 4 },
+    { "text": "Diary day 5!", "id" : 5 },
+    { "text": "Diary day 5!", "id" : 6 },
+    { "text": "Diary day 5!", "id" : 7 },
+    { "text": "Diary day 5!", "id" : 8 }
+  ]
 }

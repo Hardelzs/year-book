@@ -1,20 +1,20 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import YearBook from "./Components/YearBook"
-import Null from "./Components/Null"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import YearBook from "./Components/YearBook";
+import EntryPage from "./Components/EntryPage";
+import Year1 from "./Components/Year1";
 
 
-const App = () => {
+function App() {
   return (
     <Router>
-      {/* <nav>
-        <Link to="/" className="">YearBook</Link> | <Link to="/null">Null</Link>
-      </nav> */}
       <Routes>
-        <Route path="/" element={<YearBook/>}></Route>
-        <Route path="/null" element={<Null />}></Route>
+        <Route path="/" element={<YearBook></YearBook>} />
+        <Route path="/entry" element={<EntryPage/>} />
+        <Route path="/Year1" element={<Year1/>} />
+        {/* same add for others */}
       </Routes>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;
