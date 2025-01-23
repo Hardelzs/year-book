@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input{
+    font-size: 20px;
+    height: 45px;
+    width: 300px;
+    padding: 15px;
+}
+
+/* Example additional classes for a grid layout */
+.grey {
+    columns: 300px;
+  }
+  
+  .rounded-lg {
+    border-radius: 0.5rem;
+  }
+  
+  .transition-all {
+    transition: all 0.3s ease-in-out;
+  }
+  

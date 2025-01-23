@@ -81,7 +81,8 @@ const YearBook = () => {
         <div className="flex gap-2">
           <input
             type="text"
-            className="border-black border rounded-full focus:outline-none"
+            className="border-black border font-mono rounded-full focus:outline-none"
+            placeholder="Search Year Book"
           />
           <button
             type="submit"
