@@ -34,6 +34,10 @@ const Navigation = () => {
           {/* Sidebar Content */}
           <div className="mt-4 px-6">
             <h1>Cool</h1>
+
+            <h1>Name</h1>
+            <h2>Login </h2>
+            <h3>Check your stats</h3>
           </div>
         </div>
       )}

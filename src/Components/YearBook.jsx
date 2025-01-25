@@ -1,4 +1,3 @@
-
 import { IoSearchSharp } from "react-icons/io5";
 import { FaBookBookmark } from "react-icons/fa6";
 import diaryData from "../data/data.json";
@@ -10,8 +9,6 @@ import Navigation from "./Navigation";
 const YearBook = () => {
   const navigate = useNavigate();
 
-
-  
   const idToComponentMap = {
     1: "/Year1",
     2: "/entry",
@@ -25,16 +22,15 @@ const YearBook = () => {
 
   const handleNavigation = (entry) => {
     const route = idToComponentMap[entry.id];
-    if(route) {
+    if (route) {
       navigate(route);
     } else {
       console.error(`No route found for ID: ${entry.id}`);
-      
     }
-  }
-  
+  };
 
   const [slideIndex, setSlideIndex] = useState(1);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const showSlides = (n) => {
     if (n > diaryData.entries.length) {
@@ -54,6 +50,17 @@ const YearBook = () => {
     showSlides(n);
   };
 
+  const handleSearch = () => {
+    const entry = diaryData.entries.find(
+      (entry, index) => `Year ${index + 1}`.toLowerCase() === searchQuery.toLowerCase()
+    );
+    if (entry) {
+      handleNavigation(entry);
+    } else {
+      alert("No matching year found.");
+    }
+  };
+
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "ArrowLeft") {
@@ -70,8 +77,6 @@ const YearBook = () => {
 
   return (
     <div>
-
-
       {/* Header Section */}
       <div className="flex justify-between items-center p-4 bg-opacity-80 shadow-lg text-[#151a21]">
         {/* Icon and Brand Name */}
@@ -85,16 +90,19 @@ const YearBook = () => {
             type="text"
             className="border border-black bg-transparent text-[#151a21] px-3 py-1 rounded-full focus:outline-none"
             placeholder="Search Year Book"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
           <button
-            type="submit"
-            className="rounded-full p-3 border border-black  hover:bg-gray-200"
+            type="button"
+            className="rounded-full p-3 border border-black hover:bg-gray-200"
+            onClick={handleSearch}
           >
             <IoSearchSharp />
           </button>
         </div>
         {/* Profile Icon */}
-        <Navigation/>
+        <Navigation />
       </div>
 
       {/* Diary Entries Section */}
@@ -121,13 +129,13 @@ const YearBook = () => {
 
           {/* Navigation Arrows */}
           <button
-            className="absolute top-40 left-24 transform -translate-y-1/2  text-[#151a21] p-2 rounded-md hover:bg-gray-500"
+            className="absolute top-40 left-24 transform -translate-y-1/2 text-[#151a21] p-2 rounded-md hover:bg-gray-500"
             onClick={() => plusSlides(-1)}
           >
             ❮
           </button>
           <button
-            className="absolute top-40 right-24 transform -translate-y-1/2  text-[#151a21] p-2 rounded-md hover:bg-gray-500"
+            className="absolute top-40 right-24 transform -translate-y-1/2 text-[#151a21] p-2 rounded-md hover:bg-gray-500"
             onClick={() => plusSlides(1)}
           >
             ❯
@@ -156,48 +164,19 @@ const YearBook = () => {
         </div>
       </div>
 
-      {/* scrolling part of contributors  */}
+      {/* Contributors Section */}
       <div className="overflow-hidden">
-        <div className="flex justify-center animate-scroll text-[#151a21] text-center mt-10 gap-32 ">
-          <div className="whitespace-nowrap flex- flex-col  text-center">
-          <i><SiOrganicmaps size={70}/></i>
-          <p>Orlando</p>
-          </div>
-          <div className="flex- flex-col text-center">
-          <i><SiOrganicmaps size={70}/></i>
-          <p>Orlando</p>
-          </div>
-          <div className="flex- flex-col text-center">
-          <i><SiOrganicmaps size={70}/></i>
-          <p>Orlando</p>
-          </div>
-          <div className="flex- flex-col text-center">
-          <i><SiOrganicmaps size={70}/></i>
-          <p>Orlando</p>
-          </div>
-          <div className="flex- flex-col text-center">
-          <i><SiOrganicmaps size={70}/></i>
-          <p>Orlando</p>
-          </div>
-          <div className="flex- flex-col text-center">
-          <i><SiOrganicmaps size={70}/></i>
-          <p>Orlando</p>
-          </div>
-          <div className="flex- flex-col text-center">
-          <i><SiOrganicmaps size={70}/></i>
-          <p>Orlando</p>
-          </div>
-          <div className="flex- flex-col text-center">
-          <i><SiOrganicmaps size={70}/></i>
-          <p>Orlando</p>
-          </div>
-          <div className="flex- flex-col text-center">
-          <i><SiOrganicmaps size={70}/></i>
-          <p>Orlando</p>
-          </div>
+        <div className="flex justify-center animate-scroll text-[#151a21] text-center mt-10 gap-32">
+          {[...Array(9)].map((_, i) => (
+            <div key={i} className="flex flex-col text-center">
+              <i>
+                <SiOrganicmaps size={70} />
+              </i>
+              <p>Orlando</p>
+            </div>
+          ))}
         </div>
       </div>
-
     </div>
   );
 };
