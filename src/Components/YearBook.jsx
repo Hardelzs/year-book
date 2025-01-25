@@ -61,12 +61,16 @@ const YearBook = () => {
     }
   };
 
+
+
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "ArrowLeft") {
         plusSlides(-1);
-      } else if (event.key === "ArrowRight") {
+      } if (event.key === "ArrowRight") {
         plusSlides(1);
+      } if (event.key === "Enter"){
+        handleSearch()
       }
     };
 
@@ -142,7 +146,7 @@ const YearBook = () => {
           </button>
 
           {/* Thumbnails */}
-          <div className="flex justify-center mt-10 space-x-2">
+          <div className="grid md:flex justify-center mt-10 space-x-2">
             {diaryData.entries.map((entry, index) => (
               <div
                 key={index}
