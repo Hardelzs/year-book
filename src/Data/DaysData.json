@@ -1,27 +1,27 @@
 {
-    "days": [
-      { "id": 1, "icon": "🌞", "text": "Day 1: A sunny start!" },
-      { "id": 2, "icon": "☁️", "text": "Day 2: Cloudy skies." },
-      { "id": 3, "icon": "🌧️", "text": "Day 3: Rainy and calm." },
-      { "id": 4, "icon": "❄️", "text": "Day 4: Snow is here!" },
-      { "id": 5, "icon": "🌟", "text": "Day 5: A starry night." },
-      { "id": 6, "icon": "🔥", "text": "Day 6: Burn bright." },
-      { "id": 7, "icon": "🌈", "text": "Day 7: Rainbows ahead!" },
-      { "id": 8, "icon": "🌈", "text": "Day 7: Rainbows ahead!" },
-      { "id": 9, "icon": "🌈", "text": "Day 7: Rainbows ahead!" },
-      { "id": 10, "icon": "🌈", "text": "Day 7: Rainbows ahead!" },
-      { "id": 11, "icon": "🌈", "text": "Day 7: Rainbows ahead!" },
-      { "id": 12, "icon": "🌈", "text": "Day 7: Rainbows ahead!" },
-      { "id": 13, "icon": "🌈", "text": "Day 7: Rainbows ahead!" },
-      { "id": 14, "icon": "🌈", "text": "Day 7: Rainbows ahead!" },
-      { "id": 15, "icon": "🌈", "text": "Day 7: Rainbows ahead!" },
-      { "id": 16, "icon": "🌈", "text": "Day 7: Rainbows ahead!" },
-      { "id": 17, "icon": "🌈", "text": "Day 7: Rainbows ahead!" },
-      { "id": 18, "icon": "🌈", "text": "Day 7: Rainbows ahead!" },
-      { "id": 19, "icon": "🌈", "text": "Day 7: Rainbows ahead!" },
-      { "id": 20, "icon": "🌈", "text": "Day 7: Rainbows ahead!" },
-      { "id": 21, "icon": "🌈", "text": "Day 7: Rainbows ahead!" },
-      { "id": 22, "icon": "🪭", "text": "Day 7: Rainbows ahead!" }
-    ]
-  }
-  
+  "days": [
+    { "id": 1, "icon": "🌞", "text": "Day 1: A sunny start!" },
+    { "id": 2, "icon": "☁️", "text": "Day 2: Cloudy skies." },
+    { "id": 3, "icon": "🌧️", "text": "Day 3: Rainy and calm." },
+    { "id": 4, "icon": "❄️", "text": "Day 4: Snow is here!" },
+    { "id": 5, "icon": "🌟", "text": "Day 5: A starry night." },
+    { "id": 6, "icon": "🔥", "text": "Day 6: Burn bright." },
+    { "id": 7, "icon": "🌈", "text": "Day 7: Rainbows ahead!" },
+    { "id": 8, "icon": "🌈", "text": "Day 7: Rainbows ahead!" },
+    { "id": 9, "icon": "🌈", "text": "Day 7: Rainbows ahead!" },
+    { "id": 10, "icon": "🌈", "text": "Day 7: Rainbows ahead!" },
+    { "id": 11, "icon": "🌈", "text": "Day 7: Rainbows ahead!" },
+    { "id": 12, "icon": "🌈", "text": "Day 7: Rainbows ahead!" },
+    { "id": 13, "icon": "🌈", "text": "Day 7: Rainbows ahead!" },
+    { "id": 14, "icon": "🌈", "text": "Day 7: Rainbows ahead!" },
+    { "id": 15, "icon": "🌈", "text": "Day 7: Rainbows ahead!" },
+    { "id": 16, "icon": "🌈", "text": "Day 7: Rainbows ahead!" },
+    { "id": 17, "icon": "🌈", "text": "Day 7: Rainbows ahead!" },
+    { "id": 18, "icon": "🌈", "text": "Day 7: Rainbows ahead!" },
+    { "id": 19, "icon": "🌈", "text": "Day 7: Rainbows ahead!" },
+    { "id": 20, "icon": "🌈", "text": "Day 7: Rainbows ahead!" },
+    { "id": 21, "icon": "🌈", "text": "Day 7: Rainbows ahead!" },
+    { "id": 22, "icon": "🪭", "text": "Day 7: Rainbows ahead!" },
+    { "id": 22, "icon": "+", "text": "Day 7: Rainbows ahead!" }
+  ]
+}

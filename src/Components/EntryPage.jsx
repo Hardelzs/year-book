@@ -11,7 +11,7 @@ const EntryPage = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <h1 className="text-2xl font-bold mb-6">Year 1: 366 Days</h1>
+      <h1 className="text-2xl font-bold mb-6">Year 2: 17 Days</h1>
       <div className="grid grid-cols-7 gap-4 grey">
         {daysData.days.map((day) => (
           <div

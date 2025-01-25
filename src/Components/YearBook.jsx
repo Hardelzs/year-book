@@ -146,7 +146,7 @@ const YearBook = () => {
           </button>
 
           {/* Thumbnails */}
-          <div className="grid md:flex justify-center mt-10 space-x-2">
+          <div className="grid grid-cols-4 md:flex justify-center mt-10 space-x-2">
             {diaryData.entries.map((entry, index) => (
               <div
                 key={index}
