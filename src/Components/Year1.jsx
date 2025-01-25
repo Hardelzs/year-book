@@ -16,8 +16,8 @@ const Year1 = () => {
         {daysData.days.map((day) => (
           <div
             key={day.id}
-            className={`transition-all duration-300 cursor-pointer flex items-center justify-center rounded-lg ${
-              activeDay === day.id ? "bg-blue-400 w-48 h-48" : "bg-gray-200 w-40 h-40 mb-[1rem]"
+            className={`transition-all duration-75 cursor-pointer flex items-center justify-center rounded-lg ${
+              activeDay === day.id ? "bg-blue-400 ml-96 mt-32 w-96 h-96 absolute" : "bg-gray-200 w-40 h-40 mb-[1rem]"
             }`}
             onClick={() => handleDayClick(day)}
           >

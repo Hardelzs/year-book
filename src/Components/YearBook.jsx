@@ -1,9 +1,11 @@
-import { CgProfile } from "react-icons/cg";
+
 import { IoSearchSharp } from "react-icons/io5";
 import { FaBookBookmark } from "react-icons/fa6";
 import diaryData from "../data/data.json";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { SiOrganicmaps } from "react-icons/si";
+import Navigation from "./Navigation";
 
 const YearBook = () => {
   const navigate = useNavigate();
@@ -68,37 +70,35 @@ const YearBook = () => {
 
   return (
     <div>
+
+
       {/* Header Section */}
-      <div className="flex justify-center text-3xl items-center md:gap-52 p-3 bg-red-400">
+      <div className="flex justify-between items-center p-4 bg-opacity-80 shadow-lg text-[#151a21]">
         {/* Icon and Brand Name */}
-        <div className="flex justify-center items-center">
-          <h1>
-            <FaBookBookmark />
-          </h1>
-          <p>YBK</p>
+        <div className="flex items-center gap-2 text-3xl font-bold">
+          <FaBookBookmark />
+          <p className="font-mono">YearBook</p>
         </div>
         {/* Search Input */}
-        <div className="flex gap-2">
+        <div className="flex gap-2 items-center">
           <input
             type="text"
-            className="border-black border font-mono rounded-full focus:outline-none"
+            className="border border-black bg-transparent text-[#151a21] px-3 py-1 rounded-full focus:outline-none"
             placeholder="Search Year Book"
           />
           <button
             type="submit"
-            className="rounded-full border p-2 hover:border-none"
+            className="rounded-full p-3 border border-black  hover:bg-gray-200"
           >
             <IoSearchSharp />
           </button>
         </div>
         {/* Profile Icon */}
-        <i>
-          <CgProfile />
-        </i>
+        <Navigation/>
       </div>
 
       {/* Diary Entries Section */}
-      <div className="flex justify-center items-center mt-60 gap-10">
+      <div className="flex justify-center items-center mt-20">
         <div className="relative max-w-4xl mx-auto">
           {/* Diary Entry Display */}
           {diaryData.entries.map((entry, index) => (
@@ -109,7 +109,7 @@ const YearBook = () => {
               } text-center`}
             >
               <div
-                className={`flex-shrink-0 w-80 h-60 bg-green-400 justify-center items-center flex mx-auto cursor-pointer ${
+                className={`flex-shrink-0 w-80 h-60 rounded-2xl bg-[#151a21] justify-center items-center flex mx-auto cursor-pointer ${
                   slideIndex === index + 1 ? "scale-110 w-96 h-80" : ""
                 }`}
                 onClick={() => handleNavigation(entry)}
@@ -121,20 +121,20 @@ const YearBook = () => {
 
           {/* Navigation Arrows */}
           <button
-            className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-black text-white p-2 rounded-full hover:bg-gray-800"
+            className="absolute top-40 left-24 transform -translate-y-1/2  text-[#151a21] p-2 rounded-md hover:bg-gray-500"
             onClick={() => plusSlides(-1)}
           >
             ❮
           </button>
           <button
-            className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-black text-white p-2 rounded-full hover:bg-gray-800"
+            className="absolute top-40 right-24 transform -translate-y-1/2  text-[#151a21] p-2 rounded-md hover:bg-gray-500"
             onClick={() => plusSlides(1)}
           >
             ❯
           </button>
 
           {/* Thumbnails */}
-          <div className="flex justify-center mt-5 space-x-2">
+          <div className="flex justify-center mt-10 space-x-2">
             {diaryData.entries.map((entry, index) => (
               <div
                 key={index}
@@ -145,8 +145,8 @@ const YearBook = () => {
                 }`}
                 onClick={() => currentSlide(index + 1)}
               >
-                <div className="w-20 h-12 bg-green-300 flex items-center justify-center">
-                  <span className="text-xs font-bold text-black">{`Year ${
+                <div className="w-24 h-16 rounded-xl bg-[#151a21] flex items-center justify-center">
+                  <span className="text-xs font-bold text-white">{`Year ${
                     index + 1
                   }`}</span>
                 </div>
@@ -155,6 +155,49 @@ const YearBook = () => {
           </div>
         </div>
       </div>
+
+      {/* scrolling part of contributors  */}
+      <div className="overflow-hidden">
+        <div className="flex justify-center animate-scroll text-[#151a21] text-center mt-10 gap-32 ">
+          <div className="whitespace-nowrap flex- flex-col  text-center">
+          <i><SiOrganicmaps size={70}/></i>
+          <p>Orlando</p>
+          </div>
+          <div className="flex- flex-col text-center">
+          <i><SiOrganicmaps size={70}/></i>
+          <p>Orlando</p>
+          </div>
+          <div className="flex- flex-col text-center">
+          <i><SiOrganicmaps size={70}/></i>
+          <p>Orlando</p>
+          </div>
+          <div className="flex- flex-col text-center">
+          <i><SiOrganicmaps size={70}/></i>
+          <p>Orlando</p>
+          </div>
+          <div className="flex- flex-col text-center">
+          <i><SiOrganicmaps size={70}/></i>
+          <p>Orlando</p>
+          </div>
+          <div className="flex- flex-col text-center">
+          <i><SiOrganicmaps size={70}/></i>
+          <p>Orlando</p>
+          </div>
+          <div className="flex- flex-col text-center">
+          <i><SiOrganicmaps size={70}/></i>
+          <p>Orlando</p>
+          </div>
+          <div className="flex- flex-col text-center">
+          <i><SiOrganicmaps size={70}/></i>
+          <p>Orlando</p>
+          </div>
+          <div className="flex- flex-col text-center">
+          <i><SiOrganicmaps size={70}/></i>
+          <p>Orlando</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 };
