@@ -29,7 +29,7 @@ const Year1 = () => {
   };
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center mt-14">
       <h1 className="text-2xl font-bold mb-6">Year 1: {days.length} Days</h1>
       <div className="grid grid-cols-4 md:grid-cols-7 gap-4">
         {days.map((day) => (
@@ -58,7 +58,7 @@ const Year1 = () => {
           </div>
         ))}
       </div>
-      <div className="mt-4">
+      <div className="top-0 absolute">
         <input
           type="text"
           placeholder="Icon"

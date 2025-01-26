@@ -35,7 +35,6 @@ const Navigation = ({ user, onLogout }) => {
 
           {/* Sidebar Content */}
           <div className="mt-4 px-6">
-            {/* <div className="w-64 bg-gray-800 text-white fixed top-0 right-0 h-full p-4"> */}
               <div className="flex flex-col items-center">
                 <img
                   src={user.image || "https://via.placeholder.com/100"}
@@ -62,7 +61,6 @@ const Navigation = ({ user, onLogout }) => {
               </div>
             </div>
           </div>
-        // </div>
       )}
     </>
   );

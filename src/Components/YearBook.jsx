@@ -33,7 +33,6 @@ const YearBook = () => {
   const [slideIndex, setSlideIndex] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [user, setUser] = useState(null);
-  // const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const showSlides = (n) => {
     if (n > diaryData.entries.length) {
