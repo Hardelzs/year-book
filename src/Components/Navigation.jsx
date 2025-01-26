@@ -13,12 +13,13 @@ const Navigation = ({ user, onLogout }) => {
   return (
     <>
       {/* Profile Icon to Toggle Sidebar */}
-      <div className="relative">
+      <div className="relative flex flex-col justify-center items-center">
         <CgProfile
           size={30}
           onClick={toggleSidebar}
           className="cursor-pointer hover:text-gray-500 text-[#151a21]"
         />
+        {user.name}
       </div>
 
       {/* Sidebar */}

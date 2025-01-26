@@ -33,7 +33,7 @@ const YearBook = () => {
   const [slideIndex, setSlideIndex] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [user, setUser] = useState(null);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  // const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const showSlides = (n) => {
     if (n > diaryData.entries.length) {
@@ -118,15 +118,9 @@ const YearBook = () => {
           </button>
         </div>
         {/* Profile Icon */}
-        <button
-          className="bg-gray-800 text-white px-4 py-2 rounded "
-          onClick={() => setSidebarOpen(!sidebarOpen)}
-        >
-          {user.name}
-        </button>
 
         {/* sidebar  */}
-        {sidebarOpen && <Navigation user={user} onLogout={handleLogout} />}
+        <Navigation user={user} onLogout={handleLogout} />
       </div>
 
       {/* Diary Entries Section */}
