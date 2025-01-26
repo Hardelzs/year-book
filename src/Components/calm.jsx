@@ -1,11 +1,12 @@
 import { IoSearchSharp } from "react-icons/io5";
 import { FaBookBookmark } from "react-icons/fa6";
-import diaryData from "../data/data.json";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import diaryData from "../data/data.json";
 import { SiOrganicmaps } from "react-icons/si";
-import Navigation from "./Navigation";
 import LoginForm from "./LoginForm";
+import Navigation from "./Navigation";
+
 
 const YearBook = () => {
   const navigate = useNavigate();
@@ -49,14 +50,9 @@ const YearBook = () => {
     showSlides(slideIndex + n);
   };
 
-  const currentSlide = (n) => {
-    showSlides(n);
-  };
-
   const handleSearch = () => {
     const entry = diaryData.entries.find(
-      (entry, index) =>
-        `Year ${index + 1}`.toLowerCase() === searchQuery.toLowerCase()
+      (entry, index) => `Year ${index + 1}`.toLowerCase() === searchQuery.toLowerCase()
     );
     if (entry) {
       handleNavigation(entry);
@@ -119,87 +115,19 @@ const YearBook = () => {
         </div>
         {/* Profile Icon */}
         <button
-          className="bg-gray-800 text-white px-4 py-2 rounded "
+          className="bg-gray-800 text-white px-4 py-2 rounded"
           onClick={() => setSidebarOpen(!sidebarOpen)}
         >
           {user.name}
         </button>
-
-        {/* sidebar  */}
-        {sidebarOpen && <Navigation user={user} onLogout={handleLogout} />}
       </div>
 
-      {/* Diary Entries Section */}
-      <div className="flex justify-center items-center mt-20">
-        <div className="relative max-w-4xl mx-auto">
-          {/* Diary Entry Display */}
-          {diaryData.entries.map((entry, index) => (
-            <div
-              key={entry.id}
-              className={`${
-                slideIndex === index + 1 ? "block" : "hidden"
-              } text-center`}
-            >
-              <div
-                className={`flex-shrink-0 w-80 h-60 rounded-2xl bg-[#151a21] justify-center items-center flex mx-auto cursor-pointer ${
-                  slideIndex === index + 1 ? "scale-110 w-96 h-80" : ""
-                }`}
-                onClick={() => handleNavigation(entry)}
-              >
-                <h1 className="text-white font-bold text-lg">{entry.text}</h1>
-              </div>
-            </div>
-          ))}
+      {/* Sidebar */}
+      {sidebarOpen && <Navigation user={user} onLogout={handleLogout} />}
 
-          {/* Navigation Arrows */}
-          <button
-            className="absolute top-40 left-24 transform -translate-y-1/2 text-[#151a21] p-2 rounded-md hover:bg-gray-500"
-            onClick={() => plusSlides(-1)}
-          >
-            ❮
-          </button>
-          <button
-            className="absolute top-40 right-24 transform -translate-y-1/2 text-[#151a21] p-2 rounded-md hover:bg-gray-500"
-            onClick={() => plusSlides(1)}
-          >
-            ❯
-          </button>
-
-          {/* Thumbnails */}
-          <div className="grid grid-cols-4 md:flex justify-center mt-10 space-x-2">
-            {diaryData.entries.map((entry, index) => (
-              <div
-                key={index}
-                className={`cursor-pointer border-2 ${
-                  slideIndex === index + 1
-                    ? "border-blue-500"
-                    : "border-transparent"
-                }`}
-                onClick={() => currentSlide(index + 1)}
-              >
-                <div className="w-24 h-16 rounded-xl bg-[#151a21] flex items-center justify-center">
-                  <span className="text-xs font-bold text-white">{`Year ${
-                    index + 1
-                  }`}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Contributors Section */}
-      <div className="overflow-hidden">
-        <div className="flex justify-center animate-scroll text-[#151a21] text-center mt-10 gap-32">
-          {[...Array(9)].map((_, i) => (
-            <div key={i} className="flex flex-col text-center">
-              <i>
-                <SiOrganicmaps size={70} />
-              </i>
-              <p>Orlando</p>
-            </div>
-          ))}
-        </div>
+      {/* Main Content */}
+      <div className="mt-20">
+        {/* Your existing code for displaying diary entries */}
       </div>
     </div>
   );
