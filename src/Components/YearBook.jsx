@@ -134,7 +134,7 @@ const YearBook = () => {
               } text-center`}
             >
               <div
-                className={`flex-shrink-0 w-80 h-60 rounded-2xl bg-[#151a21] justify-center items-center flex mx-auto cursor-pointer ${
+                className={`flex-shrink-0 w-80 h-60 rounded-2xl bg-[#151111b7] justify-center items-center flex mx-auto cursor-pointer ${
                   slideIndex === index + 1 ? "scale-110 w-96 h-80" : ""
                 }`}
                 onClick={() => handleNavigation(entry)}
@@ -170,7 +170,7 @@ const YearBook = () => {
                 }`}
                 onClick={() => currentSlide(index + 1)}
               >
-                <div className="w-24 h-16 rounded-xl bg-[#151a21] flex items-center justify-center">
+                <div className="w-24 h-16 rounded-xl year bg-[#151111b7] flex items-center justify-center">
                   <span className="text-xs font-bold text-white">{`Year ${
                     index + 1
                   }`}</span>

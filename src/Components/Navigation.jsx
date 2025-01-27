@@ -18,12 +18,12 @@ const Navigation = ({ user, onLogout }) => {
           onClick={toggleSidebar}
           className="cursor-pointer hover:text-gray-500 text-[#151a21]"
         />
-        {user.name}
+        {user.username}
       </div>
 
       {/* Sidebar */}
       {isOpen && (
-        <div className="fixed top-0 right-0 h-full w-72 rounded-l-xl bg-[#151a21] text-white shadow-lg z-50 transition-all duration-75">
+        <div className="fixed top-0 right-0 h-full w-72 rounded-l-xl bg-[#4e4c48] text-white shadow-lg z-50 transition-all duration-75">
           {/* Close Button */}
           <button
             className="absolute top-4 right-4 text-xl hover:text-red-500"
@@ -43,24 +43,18 @@ const Navigation = ({ user, onLogout }) => {
               <h2 className="text-xl font-bold">{user.name}</h2>
               <p>@{user.username}</p>
               <p>{user.email}</p>
-              <button
-                className="bg-red-500 mt-4 px-4 py-2 rounded hover:bg-red-600"
-                onClick={onLogout}
-              >
-                Logout
-              </button>
             </div>
 
             {/* Dropdown Button */}
-            <div className="mt-10">
+            <div className="mt-10 flex flex-col gap-5">
               <button
                 aria-expanded={isDropdownOpen}
                 aria-controls="dropdown"
                 onClick={toggleDropdown}
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                className="text-white w-full hover:ring-4 active:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex gap-12 items-center"
                 type="button"
               >
-                Dropdown button{" "}
+                Option 1{" "}
                 <svg
                   className="w-2.5 h-2.5 ml-3"
                   aria-hidden="true"
@@ -81,7 +75,7 @@ const Navigation = ({ user, onLogout }) => {
               {/* Dropdown Menu */}
               <div
                 id="dropdown"
-                className={`z-10 ${isDropdownOpen ? "block" : "hidden"} mt-2 bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700`}
+                className={`z-10 ${isDropdownOpen ? "block" : "hidden"} mt-2  divide-y divide-gray-100 rounded-lg shadow-sm w-44 `}
               >
                 <ul
                   className="py-2 text-sm text-gray-700 dark:text-gray-200"
@@ -124,8 +118,23 @@ const Navigation = ({ user, onLogout }) => {
               </div>
 
               {/* Additional Option */}
-              <button className="w-full text-left py-2 px-4 hover:bg-gray-700 rounded">
-                Option 2
+              <button className="text-white w-full hover:ring-4 active:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex gap-12 items-center">
+                Option 2 {" "}
+              <svg
+                  className="w-2.5 h-2.5 ml-3"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 10 6"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M1 1l4 4 4-4"
+                  />
+                </svg>
               </button>
             </div>
           </div>
