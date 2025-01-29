@@ -50,7 +50,7 @@ const Year1 = () => {
                     handleEditDay(day.id, { text: e.target.value })
                   }
                 />
-                <button onClick={() => handleDeleteDay(day.id)}>Delete</button>
+                <button onClick={() => handleDeleteDay(day.id)}>x</button>
               </div>
             ) : (
               <span className="text-4xl">{day.icon}</span>
