@@ -50,7 +50,7 @@ const Year1 = () => {
                     handleEditDay(day.id, { text: e.target.value })
                   }
                 />
-                <button onClick={() => handleDeleteDay(day.id)}>x</button>
+                <button onClick={() => handleDeleteDay(day.id)}>Delete</button>
               </div>
             ) : (
               <span className="text-4xl">{day.icon}</span>
@@ -58,20 +58,22 @@ const Year1 = () => {
           </div>
         ))}
       </div>
-      <div className="top-0 absolute">
+      <div className="absolute top-0 bg-gray-200 rounded-lg flex p-2 gap-10">
         <input
           type="text"
           placeholder="Icon"
           value={newDay.icon}
           onChange={(e) => setNewDay({ ...newDay, icon: e.target.value })}
+          className="h-3 focus:outline-none"
         />
         <input
           type="text"
           placeholder="Text"
           value={newDay.text}
           onChange={(e) => setNewDay({ ...newDay, text: e.target.value })}
+          className="h-3 focus:outline-none"
         />
-        <button onClick={handleAddDay}>Add Day</button>
+        <button onClick={handleAddDay} className="bg-blue-500 px-3 rounded-lg text-sm">Add Day</button>
       </div>
     </div>
   );
