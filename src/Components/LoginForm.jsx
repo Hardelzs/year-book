@@ -54,7 +54,7 @@ const LoginForm = ({ onLogin }) => {
           onChange={handleChange}
           required
         />
-        <input
+        {/* <input
           type="text"
           name="username"
           placeholder="Username"
@@ -104,7 +104,7 @@ const LoginForm = ({ onLogin }) => {
             alt="Profile Preview"
             className="w-20 h-20 rounded-full mt-4"
           />
-        )}
+        )} */}
         <button
           type="submit"
           className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 mt-4"
