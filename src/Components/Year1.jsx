@@ -22,9 +22,6 @@ const Year1 = () => {
     }
   };
 
-  const handleEditDay = (id, updatedDay) => {
-    setDays(days.map((day) => (day.id === id ? { ...day, ...updatedDay } : day)));
-  };
 
   const handleDeleteDay = (id) => {
     setDays(days.filter((day) => day.id !== id));
