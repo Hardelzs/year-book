@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Year1 = () => {
+  const navigate = useNavigate();
   const [days, setDays] = useState([
     { id: 1, icon: "🌞", text: "Day 1: A sunny start!" },
     { id: 2, icon: "☁️", text: "Day 2: Cloudy skies." },
@@ -30,6 +32,9 @@ const Year1 = () => {
 
   return (
     <div className="flex flex-col items-center mt-16">
+      <button onClick={() => navigate("/")} className="absolute top-5 left-5 bg-gray-300 px-4 py-2 rounded-lg hover:bg-gray-400">
+        ⬅ Back to Yearbook
+      </button>
       <h1 className="text-2xl font-bold mb-6">Year 1: {days.length} Days</h1>
       <div className="grid grid-cols-4 md:grid-cols-7 gap-4">
         {days.map((day) => (
@@ -44,13 +49,7 @@ const Year1 = () => {
           >
             {activeDay === day.id ? (
               <div>
-                <p
-                  value={day.text}
-                  onChange={(e) =>
-                    handleEditDay(day.id, { text: e.target.value })
-                  }
-                  className="text-lg"
-                >Day {days.length} : {day.text}</p>
+                <p className="text-lg">Day {days.length} : {day.text}</p>
                 <button onClick={() => handleDeleteDay(day.id)} className="absolute top-0 right-5 text-2xl bg-green-400 w-10 h-10 hover:text-red-700">x</button>
               </div>
             ) : (
