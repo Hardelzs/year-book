@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { CgClose, CgProfile } from "react-icons/cg";
+import { useNavigate } from "react-router-dom";
 
 const Navigation = ({ user, onLogout }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,6 +10,8 @@ const Navigation = ({ user, onLogout }) => {
 
   const toggleSidebar = () => setIsOpen(!isOpen);
   const toggleDropdown = () => setDropdownOpen(!isDropdownOpen);
+
+  const navigate = useNavigate()
 
   return (
     <>
@@ -42,7 +45,7 @@ const Navigation = ({ user, onLogout }) => {
                 className="w-24 h-24 rounded-full mb-4"
               />
               <h2 className="text-xl font-bold">{user.name}</h2>
-              <p>@{user.username}</p>
+              <p>{user.username}</p>
               <p>{user.email}</p>
             </div>
 
@@ -84,8 +87,9 @@ const Navigation = ({ user, onLogout }) => {
                 >
                   <li>
                     <a
-                      href="index.html"
+                      href=""
                       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      onClick={() => navigate("/Profile")}
                     >
                       Profile
                     </a>
