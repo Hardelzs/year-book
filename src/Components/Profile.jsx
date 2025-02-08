@@ -1,3 +1,5 @@
+import { IoSearchSharp } from "react-icons/io5";
+import { FaBookBookmark } from "react-icons/fa6";
 
 
 const Profile = () => {
@@ -11,7 +13,7 @@ const Profile = () => {
           <p className="font-mono">YearBook</p>
         </div>
         {/* Search Input */}
-        <div className="flex gap-2 items-center">
+        {/* <div className="flex gap-2 items-center">
           <input
             type="text"
             className="border border-black bg-transparent text-[#151a21] px-3 py-1 rounded-full focus:outline-none"
@@ -26,11 +28,9 @@ const Profile = () => {
           >
             <IoSearchSharp />
           </button>
-        </div>
+        </div> */}
         {/* Profile Icon */}
 
-        {/* sidebar  */}
-        <Navigation user={user} onLogout={handleLogout} />
       </div>
     </div>
   )
