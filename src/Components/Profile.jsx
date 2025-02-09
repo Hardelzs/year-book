@@ -21,7 +21,7 @@ const Profile = ({ user }) => {
 
       {/* NavBar  */}
       <div className="flex gap-20">
-        <div className="top-20 left-0 h-full w-72  bg-[#4e4c48] text-white shadow-lg z-50 transition-all duration-75">
+        <div className="fixed top-20 left-0 h-full w-72  bg-[#4e4c48] text-white shadow-lg z-50 transition-all duration-75">
           {/* Sidebar Content */}
           <div className="mt-4 px-6">
             <div className="flex flex-col items-center">
@@ -77,8 +77,16 @@ const Profile = ({ user }) => {
           </div>
         </div>
 
-        <div>
-          green
+          {/* button for each id  */}
+        <div className="ml-96">
+          <div className="flex gap-10">
+            <button className="border p-3">Profile</button>
+            <button className="border p-3">Phone number</button>
+            <button className="border p-3">Password Changer</button>
+            <button className="border p-3">Personal Details</button>
+            <button className="border p-3">Add Address</button>
+
+          </div>
         </div>
       </div>
     </div>
