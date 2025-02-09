@@ -20,64 +20,65 @@ const Profile = ({ user }) => {
       </div>
 
       {/* NavBar  */}
-
-      <div className="fixed top-20 left-0 h-full w-72  bg-[#4e4c48] text-white shadow-lg z-50 transition-all duration-75">
-
-
-        {/* Sidebar Content */}
-        <div className="mt-4 px-6">
-          <div className="flex flex-col items-center">
-            <h2 className="text-xl font-bold">Your Details</h2>
-          </div>
-
-          {/* Dropdown Button */}
-          <div className="mt-10 flex flex-col gap-5">
-
-            {/* Dropdown Menu */}
-            <div
-              id="dropdown"
-              className={`z-10  w-full divide-y divide-gray-100 rounded-lg shadow-sm`}
-            >
-              <ul
-                className="py-2 text-sm text-gray-700 dark:text-gray-200"
-                aria-labelledby="dropdownDefaultButton"
-              >
-                <li>
-                  <a
-                    href=""
-                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >
-                    Profile
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >
-                    Settings
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >
-                    Earnings
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >
-                    Sign out
-                  </a>
-                </li>
-              </ul>
+      <div className="flex gap-20">
+        <div className="top-20 left-0 h-full w-72  bg-[#4e4c48] text-white shadow-lg z-50 transition-all duration-75">
+          {/* Sidebar Content */}
+          <div className="mt-4 px-6">
+            <div className="flex flex-col items-center">
+              <h2 className="text-xl font-bold">Your Details</h2>
             </div>
 
+            {/* Dropdown Button */}
+            <div className="mt-10 flex flex-col gap-5">
+              {/* Dropdown Menu */}
+              <div
+                id="dropdown"
+                className={`z-10  w-full divide-y divide-gray-100 rounded-lg shadow-sm`}
+              >
+                <ul
+                  className="py-2 text-sm text-gray-700 dark:text-gray-200"
+                  aria-labelledby="dropdownDefaultButton"
+                >
+                  <li>
+                    <a
+                      href=""
+                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
+                      Profile
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
+                      Settings
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
+                      Earnings
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
+                      Sign out
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
+        </div>
+
+        <div>
+          green
         </div>
       </div>
     </div>
