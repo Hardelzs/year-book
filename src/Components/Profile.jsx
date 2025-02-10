@@ -1,8 +1,12 @@
 // import { IoSearchSharp } from "react-icons/io5";
 import { FaBookBookmark } from "react-icons/fa6";
 import { CgProfile } from "react-icons/cg";
+import { useNavigate } from "react-router-dom";
 
 const Profile = ({ user }) => {
+
+  const navigate = useNavigate()
+  
   return (
     <div>
       {/* Header Section */}
@@ -20,8 +24,11 @@ const Profile = ({ user }) => {
       </div>
 
       {/* NavBar  */}
+      <button onClick={() => navigate("/")} className="absolute top-5 left-5 mt-16 bg-gray-300 px-4 py-2 rounded-lg hover:bg-gray-400">
+        ⬅ Back to Yearbook
+      </button>
       <div className="flex gap-20">
-        <div className="fixed top-20 left-0 h-full w-72  bg-[#4e4c48] text-white shadow-lg z-50 transition-all duration-75">
+        <div className="fixed top-40 left-0 h-full w-72  bg-[#4e4c48] text-white shadow-lg z-50 transition-all duration-75">
           {/* Sidebar Content */}
           <div className="mt-4 px-6">
             <div className="flex flex-col items-center">
@@ -79,14 +86,38 @@ const Profile = ({ user }) => {
 
           {/* button for each id  */}
         <div className="ml-96">
-          <div className="flex gap-10">
-            <button className="border p-3">Profile</button>
+
+          <div className="flex gap-10 mt-24">
+
+            <button className="border p-3 px-10">Profile</button>
             <button className="border p-3">Phone number</button>
             <button className="border p-3">Password Changer</button>
             <button className="border p-3">Personal Details</button>
             <button className="border p-3">Add Address</button>
 
           </div>
+
+          {/* Profile */}
+          <div>
+            Phone number
+          </div>
+          {/* Phone number  */}
+          <dialog>
+            Phone number
+          </dialog>
+          {/* Password Changer  */}
+          <div>
+            Password Changer
+          </div>
+          {/* Personal Details  */}
+          <div>
+            Persoanle details
+          </div>
+          {/* Add Address  */}
+          <div>
+            Add 
+          </div>
+
         </div>
       </div>
     </div>
