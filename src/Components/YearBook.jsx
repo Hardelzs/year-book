@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { SiOrganicmaps } from "react-icons/si";
 import Navigation from "./Navigation";
 import LoginForm from "./LoginForm";
+// import Profile from "./Profile";
 
 const YearBook = () => {
   const navigate = useNavigate();

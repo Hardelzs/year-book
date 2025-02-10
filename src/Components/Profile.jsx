@@ -3,7 +3,7 @@ import { FaBookBookmark } from "react-icons/fa6";
 import { CgProfile } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
 
-const Profile = ({ user }) => {
+const Profile = ({ }) => {
 
   const navigate = useNavigate()
   
@@ -32,7 +32,7 @@ const Profile = ({ user }) => {
           {/* Sidebar Content */}
           <div className="mt-4 px-6">
             <div className="flex flex-col items-center">
-              <h2 className="text-xl font-bold">Your Details</h2>
+              <h2 className="text-xl font-bold">Your Details {}</h2>
             </div>
 
             {/* Dropdown Button */}
