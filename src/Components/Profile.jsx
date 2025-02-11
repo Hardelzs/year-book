@@ -2,11 +2,12 @@
 import { FaBookBookmark } from "react-icons/fa6";
 import { CgProfile } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-const Profile = ({ }) => {
+const Profile = () => {
+  const navigate = useNavigate();
+  const [activeSection, setActiveSection] = useState(null);
 
-  const navigate = useNavigate()
-  
   return (
     <div>
       {/* Header Section */}
@@ -24,7 +25,10 @@ const Profile = ({ }) => {
       </div>
 
       {/* NavBar  */}
-      <button onClick={() => navigate("/")} className="absolute top-5 left-5 mt-16 bg-gray-300 px-4 py-2 rounded-lg hover:bg-gray-400">
+      <button
+        onClick={() => navigate("/")}
+        className="absolute top-5 left-5 mt-16 bg-gray-300 px-4 py-2 rounded-lg hover:bg-gray-400"
+      >
         ⬅ Back to Yearbook
       </button>
       <div className="flex gap-20">
@@ -84,40 +88,126 @@ const Profile = ({ }) => {
           </div>
         </div>
 
-          {/* button for each id  */}
+        {/* button for each id  */}
+
         <div className="ml-96">
-
           <div className="flex gap-10 mt-24">
-
-            <button className="border p-3 px-10">Profile</button>
-            <button className="border p-3">Phone number</button>
-            <button className="border p-3">Password Changer</button>
-            <button className="border p-3">Personal Details</button>
-            <button className="border p-3">Add Address</button>
-
+            <button
+              className="border border-black p-3 px-10"
+              onClick={() => setActiveSection("profile")}
+            >
+              Profile
+            </button>
+            <button
+              className="border border-black p-3"
+              onClick={() => setActiveSection("phone")}
+            >
+              Phone number
+            </button>
+            <button
+              className="border border-black p-3"
+              onClick={() => setActiveSection("password")}
+            >
+              Password Changer
+            </button>
+            <button
+              className="border border-black p-3"
+              onClick={() => setActiveSection("details")}
+            >
+              Personal Details
+            </button>
+            <button
+              className="border border-black p-3"
+              onClick={() => setActiveSection("address")}
+            >
+              Add Address
+            </button>
           </div>
 
-          {/* Profile */}
-          <div>
-            Phone number
-          </div>
-          {/* Phone number  */}
-          <dialog>
-            Phone number
-          </dialog>
-          {/* Password Changer  */}
-          <div>
-            Password Changer
-          </div>
-          {/* Personal Details  */}
-          <div>
-            Persoanle details
-          </div>
-          {/* Add Address  */}
-          <div>
-            Add 
-          </div>
+          {/* profile  */}
+          {activeSection === "profile" && (
+            <div>
+              <div className="border border-black w-full h-full p-6 mt-10 gap-10">
+                <div className="border border-black w-full h-full px-5 p-2">
+                  <p className="small font-mono">Phone number</p>
+                  <p>09155682325</p>
+                </div>
 
+                <div className="rounded-sm  w-full h-full px-5 p-2 mt-7 text-center bg-[#4e4c48]">
+                  <button>Change phone number</button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* phone number  */}
+          {activeSection === "phone" && (
+            <div>
+              {" "}
+              <div className="border border-black w-full h-full p-6 mt-10 gap-10">
+                <div className="border border-black w-full h-full px-5 p-2">
+                  <p className="small font-mono">Phone number</p>
+                  <p>09155682325</p>
+                </div>
+
+                <div className="rounded-sm  w-full h-full px-5 p-2 mt-7 text-center bg-[#4e4c48]">
+                  <button>Change phone number</button>
+                </div>
+              </div>
+              t
+            </div>
+          )}
+
+          {/* password  */}
+          {activeSection === "password" && (
+            <div>
+              {" "}
+              <div className="border border-black w-full h-full p-6 mt-10 gap-10">
+                <div className="border border-black w-full h-full px-5 p-2">
+                  <p className="small font-mono">Phone number</p>
+                  <p>09155682325</p>
+                </div>
+
+                <div className="rounded-sm  w-full h-full px-5 p-2 mt-7 text-center bg-[#4e4c48]">
+                  <button>Change phone number</button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Personal details  */}
+          {activeSection === "details" && (
+            <div>
+              {" "}
+              <div className="border border-black w-full h-full p-6 mt-10 gap-10">
+                <div className="border border-black w-full h-full px-5 p-2">
+                  <p className="small font-mono">Phone number</p>
+                  <p>09155682325</p>
+                </div>
+
+                <div className="rounded-sm  w-full h-full px-5 p-2 mt-7 text-center bg-[#4e4c48]">
+                  <button>Change phone number</button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* address  */}
+          {activeSection === "address" && (
+            <div>
+              {" "}
+              <div className="border border-black w-full h-full p-6 mt-10 gap-10">
+                <div className="border border-black w-full h-full px-5 p-2">
+                  <p className="small font-mono">Phone number</p>
+                  <p>09155682325</p>
+                </div>
+
+                <div className="rounded-sm  w-full h-full px-5 p-2 mt-7 text-center bg-[#4e4c48]">
+                  <button>Change phone number</button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
