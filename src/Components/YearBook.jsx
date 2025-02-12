@@ -1,6 +1,6 @@
 import { IoSearchSharp } from "react-icons/io5";
 import { FaBookBookmark } from "react-icons/fa6";
-import diaryData from "../data/data.json";
+import diaryData from "../Data/Data.json";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SiOrganicmaps } from "react-icons/si";
