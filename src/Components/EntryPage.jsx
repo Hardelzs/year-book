@@ -1,12 +1,14 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const EntryPage = () => {
+  const navigate = useNavigate();
   const [days, setDays] = useState([
     { id: 1, icon: "🌞", text: "Day 1: A sunny start!" },
     { id: 2, icon: "☁️", text: "Day 2: Cloudy skies." },
     { id: 3, icon: "🌧️", text: "Day 3: Rainy and calm." },
   ]);
-  
+
   const [activeDay, setActiveDay] = useState(null);
   const [newDay, setNewDay] = useState({ icon: "", text: "" });
 
@@ -22,7 +24,9 @@ const EntryPage = () => {
   };
 
   const handleEditDay = (id, updatedDay) => {
-    setDays(days.map((day) => (day.id === id ? { ...day, ...updatedDay } : day)));
+    setDays(
+      days.map((day) => (day.id === id ? { ...day, ...updatedDay } : day))
+    );
   };
 
   const handleDeleteDay = (id) => {
@@ -31,6 +35,12 @@ const EntryPage = () => {
 
   return (
     <div className="flex flex-col items-center mt-14">
+      <button
+        onClick={() => navigate("/")}
+        className="absolutr top-5 left-5 bg-gray-300 px-4 py-2 rounded-lg hover:bg-gray-400 "
+      >
+        ↩️ Back to Yearbook
+      </button>
       <h1 className="text-2xl font-bold mb-6">Year 2: {days.length} Days</h1>
       <div className="grid grid-cols-4 md:grid-cols-7 gap-4">
         {days.map((day) => (
