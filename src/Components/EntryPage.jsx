@@ -37,7 +37,7 @@ const EntryPage = () => {
     <div className="flex flex-col items-center mt-14">
       <button
         onClick={() => navigate("/")}
-        className="absolutr top-5 left-5 bg-gray-300 px-4 py-2 rounded-lg hover:bg-gray-400 "
+        className="absolute top-5 left-5 bg-gray-300 px-4 py-2 rounded-lg hover:bg-gray-400 "
       >
         ↩️ Back to Yearbook
       </button>
@@ -69,20 +69,22 @@ const EntryPage = () => {
           </div>
         ))}
       </div>
-      <div className="top-0 absolute">
+      <div className="top-3 bg-gray-200 rounded-lg flex p-2 gap-10 absolute">
         <input
           type="text"
           placeholder="Icon"
           value={newDay.icon}
           onChange={(e) => setNewDay({ ...newDay, icon: e.target.value })}
+          className="h-3 focus:outline-none"
         />
         <input
           type="text"
           placeholder="Text"
           value={newDay.text}
           onChange={(e) => setNewDay({ ...newDay, text: e.target.value })}
+          className="h-3 focus:outline-none"
         />
-        <button onClick={handleAddDay}>Add Day</button>
+        <button onClick={handleAddDay} className="bg-blue-500 px-3 rounded-lg text-sm">Add Day</button>
       </div>
     </div>
   );
