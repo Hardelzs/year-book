@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import YearBook from "./Components/YearBook";
-import EntryPage from "./Components/EntryPage";
+import Year2 from "./Components/Year2";
 import Year1 from "./Components/Year1";
 import Profile from "./Components/Profile";
 
@@ -10,7 +10,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<YearBook />} />
-        <Route path="/entry" element={<EntryPage/>} />
+        <Route path="/entry" element={<Year2/>} />
         <Route path="/Year1" element={<Year1/>} />
         <Route path="/Profile" element={<Profile/>} />
         {/* same add for others */}

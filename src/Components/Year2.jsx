@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const EntryPage = () => {
+const Year2 = () => {
   const navigate = useNavigate();
   const [days, setDays] = useState([
     { id: 1, icon: "🌞", text: "Day 1: A sunny start!" },
@@ -90,4 +90,4 @@ const EntryPage = () => {
   );
 };
 
-export default EntryPage;
+export default Year2;
