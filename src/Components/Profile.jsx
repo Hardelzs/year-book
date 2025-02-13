@@ -7,6 +7,17 @@ import { useState } from "react";
 const Profile = () => {
   // const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState(null);
+  const [phoneNumber, setPhoneNumber] = useState("09155682325");
+  const [isEditing, setIsEditing] = useState(false);
+  const [newPhoneNumber, setNewPhoneNumber] = useState("");
+
+  const handlePhoneChange = () => {
+    if (isEditing && newPhoneNumber) {
+      setPhoneNumber(newPhoneNumber);
+    }
+    setIsEditing(!isEditing);
+    setNewPhoneNumber("");
+  };
 
   return (
     <div>
@@ -94,8 +105,14 @@ const Profile = () => {
           <div className="flex gap-10 mt-24">
             <button
               className="border border-black p-3 px-10"
-              onClick={() => setActiveSection("profile")}
+              onClick={() => setActiveSection("phone")}
             >
+              <button
+                className="border border-black p-3"
+                onClick={() => setActiveSection("phone")}
+              >
+                Phone number
+              </button>
               Profile
             </button>
             <button
@@ -136,6 +153,31 @@ const Profile = () => {
                 <div className="rounded-sm  w-full h-full px-5 p-2 mt-7 text-center bg-[#4e4c48]">
                   <button>Change phone number</button>
                 </div>
+              </div>
+            </div>
+          )}
+
+          {/* Phone Number Section */}
+          {activeSection === "phone" && (
+            <div className="border border-black w-full h-full p-6 mt-10 gap-10">
+              <div className="border border-black w-full h-full px-5 p-2">
+                <p className="small font-mono">Phone number</p>
+                {isEditing ? (
+                  <input
+                    type="text"
+                    value={newPhoneNumber}
+                    onChange={(e) => setNewPhoneNumber(e.target.value)}
+                    className="border p-2 w-full"
+                    placeholder="Enter new phone number"
+                  />
+                ) : (
+                  <p>{phoneNumber}</p>
+                )}
+              </div>
+              <div className="rounded-sm w-full h-full px-5 p-2 mt-7 text-center bg-[#4e4c48]">
+                <button onClick={handlePhoneChange} className="text-white">
+                  {isEditing ? "Save" : "Change phone number"}
+                </button>
               </div>
             </div>
           )}
