@@ -103,21 +103,15 @@ const Profile = () => {
 
         <div className="ml-96">
           <div className="flex gap-10 mt-24">
-            <button
-              className="border border-black p-3 px-10"
-              onClick={() => setActiveSection("phone")}
-            >
               <button
                 className="border border-black p-3"
-                onClick={() => setActiveSection("phone")}
+                onClick={() => setActiveSection("profile")}
               >
-                Phone number
-              </button>
               Profile
-            </button>
+              </button>
             <button
               className="border border-black p-3"
-              onClick={() => setActiveSection("phone")}
+              onClick={() => setActiveSection("phones")}
             >
               Phone number
             </button>
@@ -141,115 +135,136 @@ const Profile = () => {
             </button>
           </div>
 
-          {/* profile  */}
-          {activeSection === "profile" && (
-            <div>
-              <div className="border border-black w-full h-full p-6 mt-10 gap-10">
-                <div className="border border-black w-full h-full px-5 p-2">
-                  <p className="small font-mono">Phone number</p>
-                  <p>09155682325</p>
-                </div>
-
-                <div className="rounded-sm  w-full h-full px-5 p-2 mt-7 text-center bg-[#4e4c48]">
-                  <button>Change phone number</button>
-                </div>
-              </div>
-            </div>
-          )}
-
           {/* Phone Number Section */}
-          {activeSection === "phone" && (
-            <div className="border border-black w-full h-full p-6 mt-10 gap-10">
-              <div className="border border-black w-full h-full px-5 p-2">
+          {activeSection === "profile" && (
+            <div className="border border-black w-full  p-6 mt-10 gap-10">
+              <div className="border border-black w-full px-5 p-2">
                 <p className="small font-mono">Phone number</p>
                 {isEditing ? (
                   <input
                     type="text"
                     value={newPhoneNumber}
                     onChange={(e) => setNewPhoneNumber(e.target.value)}
-                    className="border p-2 w-full"
+                    className="border border-black rounded-md text-sm bg-transparent focus:outline-none p-2 w-full"
+                    placeholder="Enter new profile Name"
+                  />
+                ) : (
+                  <p>{phoneNumber}</p>
+                )}
+              </div>
+              <div className="rounded-sm w-full  px-5 p-2 mt-3  text-center bg-[#4e4c48]">
+                <button onClick={handlePhoneChange} className="text-white w-full">
+                  {isEditing ? "Save" : "Change Profile name"}
+                </button>
+              </div>
+            </div>
+          )}
+
+
+          {/* Phone Number Section */}
+          {activeSection === "phones" && (
+            <div className="border border-black w-full  p-6 mt-10 gap-10">
+              <div className="border border-black w-full px-5 p-2">
+                <p className="small font-mono">Phone number</p>
+                {isEditing ? (
+                  <input
+                    type="text"
+                    value={newPhoneNumber}
+                    onChange={(e) => setNewPhoneNumber(e.target.value)}
+                    className="border border-black rounded-md text-sm bg-transparent focus:outline-none p-2 w-full"
                     placeholder="Enter new phone number"
                   />
                 ) : (
                   <p>{phoneNumber}</p>
                 )}
               </div>
-              <div className="rounded-sm w-full h-full px-5 p-2 mt-7 text-center bg-[#4e4c48]">
-                <button onClick={handlePhoneChange} className="text-white">
+              <div className="rounded-sm w-full  px-5 p-2 mt-3  text-center bg-[#4e4c48]">
+                <button onClick={handlePhoneChange} className="text-white w-full">
                   {isEditing ? "Save" : "Change phone number"}
                 </button>
               </div>
             </div>
           )}
 
-          {/* phone number  */}
-          {activeSection === "phone" && (
-            <div>
-              {" "}
-              <div className="border border-black w-full h-full p-6 mt-10 gap-10">
-                <div className="border border-black w-full h-full px-5 p-2">
-                  <p className="small font-mono">Phone number</p>
-                  <p>09155682325</p>
-                </div>
 
-                <div className="rounded-sm  w-full h-full px-5 p-2 mt-7 text-center bg-[#4e4c48]">
-                  <button>Change phone number</button>
-                </div>
-              </div>
-              t
-            </div>
-          )}
-
-          {/* password  */}
+          {/* Phone Number Section */}
           {activeSection === "password" && (
-            <div>
-              {" "}
-              <div className="border border-black w-full h-full p-6 mt-10 gap-10">
-                <div className="border border-black w-full h-full px-5 p-2">
-                  <p className="small font-mono">Phone number</p>
-                  <p>09155682325</p>
-                </div>
-
-                <div className="rounded-sm  w-full h-full px-5 p-2 mt-7 text-center bg-[#4e4c48]">
-                  <button>Change phone number</button>
-                </div>
+            <div className="border border-black w-full  p-6 mt-10 gap-10">
+              <div className="border border-black w-full px-5 p-2">
+                <p className="small font-mono">Phone number</p>
+                {isEditing ? (
+                  <input
+                    type="text"
+                    value={newPhoneNumber}
+                    onChange={(e) => setNewPhoneNumber(e.target.value)}
+                    className="border border-black rounded-md text-sm bg-transparent focus:outline-none p-2 w-full"
+                    placeholder="Enter your new Password"
+                  />
+                ) : (
+                  <p>{phoneNumber}</p>
+                )}
+              </div>
+              <div className="rounded-sm w-full  px-5 p-2 mt-3  text-center bg-[#4e4c48]">
+                <button onClick={handlePhoneChange} className="text-white w-full">
+                  {isEditing ? "Save" : "Change Password"}
+                </button>
               </div>
             </div>
           )}
 
-          {/* Personal details  */}
+
+          {/* Phone Number Section */}
           {activeSection === "details" && (
-            <div>
-              {" "}
-              <div className="border border-black w-full h-full p-6 mt-10 gap-10">
-                <div className="border border-black w-full h-full px-5 p-2">
-                  <p className="small font-mono">Phone number</p>
-                  <p>09155682325</p>
-                </div>
-
-                <div className="rounded-sm  w-full h-full px-5 p-2 mt-7 text-center bg-[#4e4c48]">
-                  <button>Change phone number</button>
-                </div>
+            <div className="border border-black w-full  p-6 mt-10 gap-10">
+              <div className="border border-black w-full px-5 p-2">
+                <p className="small font-mono">Phone number</p>
+                {isEditing ? (
+                  <input
+                    type="text"
+                    value={newPhoneNumber}
+                    onChange={(e) => setNewPhoneNumber(e.target.value)}
+                    className="border border-black rounded-md text-sm bg-transparent focus:outline-none p-2 w-full"
+                    placeholder="Enter new details"
+                  />
+                ) : (
+                  <p>{phoneNumber}</p>
+                )}
+              </div>
+              <div className="rounded-sm w-full  px-5 p-2 mt-3  text-center bg-[#4e4c48]">
+                <button onClick={handlePhoneChange} className="text-white w-full">
+                  {isEditing ? "Save" : "Change your Details"}
+                </button>
               </div>
             </div>
           )}
 
-          {/* address  */}
+
+          {/* Phone Number Section */}
           {activeSection === "address" && (
-            <div>
-              {" "}
-              <div className="border border-black w-full h-full p-6 mt-10 gap-10">
-                <div className="border border-black w-full h-full px-5 p-2">
-                  <p className="small font-mono">Phone number</p>
-                  <p>09155682325</p>
-                </div>
-
-                <div className="rounded-sm  w-full h-full px-5 p-2 mt-7 text-center bg-[#4e4c48]">
-                  <button>Change phone number</button>
-                </div>
+            <div className="border border-black w-full  p-6 mt-10 gap-10">
+              <div className="border border-black w-full px-5 p-2">
+                <p className="small font-mono">Phone number</p>
+                {isEditing ? (
+                  <input
+                    type="text"
+                    value={newPhoneNumber}
+                    onChange={(e) => setNewPhoneNumber(e.target.value)}
+                    className="border border-black rounded-md text-sm bg-transparent focus:outline-none p-2 w-full"
+                    placeholder="Enter new Address"
+                  />
+                ) : (
+                  <p>{phoneNumber}</p>
+                )}
+              </div>
+              <div className="rounded-sm w-full  px-5 p-2 mt-3  text-center bg-[#4e4c48]">
+                <button onClick={handlePhoneChange} className="text-white w-full">
+                  {isEditing ? "Save" : "Change your address"}
+                </button>
               </div>
             </div>
           )}
+
+
         </div>
       </div>
     </div>
