@@ -1,11 +1,11 @@
 // import { IoSearchSharp } from "react-icons/io5";
 import { FaBookBookmark } from "react-icons/fa6";
 import { CgProfile } from "react-icons/cg";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const Profile = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState(null);
   const [phoneNumber, setPhoneNumber] = useState("09155682325");
   const [isEditing, setIsEditing] = useState(false);
@@ -36,12 +36,12 @@ const Profile = () => {
       </div>
 
       {/* NavBar  */}
-      {/* <button
+      <button
         onClick={() => navigate("/")}
         className="absolute top-5 left-5 mt-16 bg-gray-300 px-4 py-2 rounded-lg hover:bg-gray-400"
       >
         ⬅ Back to Yearbook
-      </button> */}
+      </button>
       <div className="flex gap-20">
         <div className="fixed top-40 left-0 h-full w-72  bg-[#4e4c48] text-white shadow-lg z-50 transition-all duration-75">
           {/* Sidebar Content */}
