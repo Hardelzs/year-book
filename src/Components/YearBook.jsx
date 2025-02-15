@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SiOrganicmaps } from "react-icons/si";
 import Navigation from "./Navigation";
-import LoginForm from "./LoginForm";
 
 const YearBook = () => {
   const navigate = useNavigate();
@@ -86,9 +85,6 @@ const YearBook = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slideIndex]);
 
-  if (!user) {
-    return <LoginForm onLogin={handleLogin} />;
-  }
 
   return (
     <div>
@@ -119,7 +115,7 @@ const YearBook = () => {
         {/* Profile Icon */}
 
         {/* sidebar  */}
-        <Navigation user={user} onLogout={handleLogout} />
+        {/* <Navigation user={user} onLogout={handleLogout} /> */}
       </div>
 
       {/* Diary Entries Section */}

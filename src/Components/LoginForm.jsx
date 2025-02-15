@@ -1,8 +1,10 @@
 import {  useState } from "react";
 import { auth, googleProvider } from "../FirebaseConfig";
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import {  useNavigate } from "react-router-dom";
 
 const LoginForm = ({ onLogin }) => {
+  const navigate = useNavigate(null)
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -29,7 +31,8 @@ const LoginForm = ({ onLogin }) => {
         // Login
         await signInWithEmailAndPassword(auth, formData.email, formData.password);
       }
-      onLogin(); // Call parent function after login/signup
+      // onLogin();
+      navigate('/YearBook') // Call parent function after login/signup
     } catch (err) {
       setError(err.message);
     }
@@ -38,7 +41,8 @@ const LoginForm = ({ onLogin }) => {
   const handleGoogleSignIn = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
-      onLogin(); // Call parent function after login
+      // onLogin(); // Call parent function after login
+      navigate('/YearBook')
     } catch (err) {
       setError(err.message);
     }

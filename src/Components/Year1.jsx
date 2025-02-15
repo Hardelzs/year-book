@@ -29,7 +29,7 @@ const Year1 = () => {
 
   return (
     <div className="flex flex-col items-center mt-16">
-      <button onClick={() => navigate("/")} className="absolute top-5 left-5 bg-gray-300 px-4 py-2 rounded-lg hover:bg-gray-400">
+      <button onClick={() => navigate("/YearBook")} className="absolute top-5 left-5 bg-gray-300 px-4 py-2 rounded-lg hover:bg-gray-400">
         ⬅ Back to Yearbook
       </button>
       <h1 className="text-2xl font-bold mb-6">Year 1: {days.length} Days</h1>
