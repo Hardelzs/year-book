@@ -22,7 +22,7 @@ const Navigation = ({ user, onLogout }) => {
           onClick={toggleSidebar}
           className="cursor-pointer hover:text-gray-500 text-[#151a21]"
         />
-        {user.username}
+        {/* {user.username} */}
       </div>
 
       {/* Sidebar */}

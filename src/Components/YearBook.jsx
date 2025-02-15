@@ -115,7 +115,7 @@ const YearBook = () => {
         {/* Profile Icon */}
 
         {/* sidebar  */}
-        {/* <Navigation user={user} onLogout={handleLogout} /> */}
+        <Navigation user={user} onLogout={handleLogout} />
       </div>
 
       {/* Diary Entries Section */}
