@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SiOrganicmaps } from "react-icons/si";
 import Navigation from "./Navigation";
+import { doc, setDoc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
+import { db, auth } from "../FirebaseConfig";
 
 const YearBook = () => {
   const navigate = useNavigate();
@@ -20,14 +22,20 @@ const YearBook = () => {
     8: "/diary8",
   };
 
-  const handleNavigation = (entry) => {
+  const handleNavigation = async (entry) => {
     const route = idToComponentMap[entry.id];
     if (route) {
       navigate(route);
+  
+      if (user) {
+        const userRef = doc(db, "users", user.uid);
+        await setDoc(userRef, { lastEntry: entry.id }, { merge: true });
+      }
     } else {
       console.error(`No route found for ID: ${entry.id}`);
     }
   };
+  
 
   const [slideIndex, setSlideIndex] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");

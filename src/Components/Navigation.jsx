@@ -3,7 +3,7 @@ import { useState } from "react";
 import { CgClose, CgProfile } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
 
-const Navigation = ({ user, onLogout }) => {
+const Navigation = ({ onLogout }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
@@ -40,13 +40,13 @@ const Navigation = ({ user, onLogout }) => {
           <div className="mt-4 px-6">
             <div className="flex flex-col items-center">
               <img
-                src={user.image || "https://via.placeholder.com/100"}
+                // src={user.image || "https://via.placeholder.com/100"}
                 alt="User"
                 className="w-24 h-24 rounded-full mb-4"
               />
-              <h2 className="text-xl font-bold">{user.name}</h2>
-              <p>{user.username}</p>
-              <p>{user.email}</p>
+              {/* <h2 className="text-xl font-bold">{user.name}</h2> */}
+              {/* <p>{user.username}</p> */}
+              {/* <p>{user.email}</p> */}
             </div>
 
             {/* Dropdown Button */}

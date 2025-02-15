@@ -1,30 +1,52 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { db, auth } from "../FirebaseConfig";
+import { doc, getDoc, setDoc, updateDoc, arrayUnion } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
 
 const Year1 = () => {
   const navigate = useNavigate();
-  const [days, setDays] = useState([
-    { id: 1, icon: "🌞", text: "Day 1: A sunny start!" },
-    { id: 2, icon: "☁️", text: "Day 2: Cloudy skies." },
-    { id: 3, icon: "🌧️", text: "Day 3: Rainy and calm." },
-  ]);
+  const [days, setDays] = useState([]);
   const [activeDay, setActiveDay] = useState(null);
   const [newDay, setNewDay] = useState({ icon: "", text: "" });
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      if (currentUser) {
+        setUser(currentUser);
+        const userRef = doc(db, "users", currentUser.uid);
+        const userDoc = await getDoc(userRef);
+        if (userDoc.exists()) {
+          setDays(userDoc.data().year1Days || []);
+        }
+      }
+    });
+    return () => unsubscribe();
+  }, []);
 
   const handleDayClick = (day) => {
     setActiveDay(activeDay === day.id ? null : day.id);
   };
 
-  const handleAddDay = () => {
-    if (newDay.icon && newDay.text) {
-      setDays([...days, { id: Date.now(), ...newDay }]);
+  const handleAddDay = async () => {
+    if (newDay.icon && newDay.text && user) {
+      const newDayEntry = { id: Date.now(), ...newDay };
+      const updatedDays = [...days, newDayEntry];
+      setDays(updatedDays);
       setNewDay({ icon: "", text: "" });
+      
+      const userRef = doc(db, "users", user.uid);
+      await updateDoc(userRef, { year1Days: arrayUnion(newDayEntry) });
     }
   };
 
-
-  const handleDeleteDay = (id) => {
-    setDays(days.filter((day) => day.id !== id));
+  const handleDeleteDay = async (id) => {
+    if (!user) return;
+    const updatedDays = days.filter((day) => day.id !== id);
+    setDays(updatedDays);
+    const userRef = doc(db, "users", user.uid);
+    await setDoc(userRef, { year1Days: updatedDays }, { merge: true });
   };
 
   return (
@@ -46,7 +68,7 @@ const Year1 = () => {
           >
             {activeDay === day.id ? (
               <div>
-                <p className="text-lg">Day {days.length} : {day.text}</p>
+                <p className="text-lg">{day.text}</p>
                 <button onClick={() => handleDeleteDay(day.id)} className="absolute top-0 right-5 text-2xl bg-green-400 w-10 h-10 hover:text-red-700">x</button>
               </div>
             ) : (
