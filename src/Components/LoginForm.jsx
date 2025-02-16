@@ -59,7 +59,7 @@ const LoginForm = ({ onLogin }) => {
           type="email"
           name="email"
           placeholder="Email"
-          className="w-full p-2 mb-4 border rounded"
+          className="w-full p-2 mb-4 text-sm font-mono border rounded"
           value={formData.email}
           onChange={handleChange}
           required

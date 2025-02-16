@@ -3,14 +3,15 @@ import YearBook from "./Components/YearBook";
 import Year2 from "./Components/Year2";
 import Year1 from "./Components/Year1";
 import Profile from "./Components/Profile";
-import LoginForm from "./Components/LoginForm";
+// import Login from "./Components/LoginForm";
+import LoginPage from "./Components/LoginPage";
 
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LoginForm />} />
+        <Route path="/" element={<LoginPage />} />
         <Route path="/YearBook" element={<YearBook />} />
         <Route path="/entry" element={<Year2/>} />
         <Route path="/Year1" element={<Year1/>} />

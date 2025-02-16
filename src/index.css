@@ -30,4 +30,12 @@ input{
   .small{
     font-size: 10px;
   }
+
+  .clip-path-login {
+    clip-path: inset(0 50% 0 0);
+  }
+  
+  .clip-path-signup {
+    clip-path: inset(0 0 0 50%);
+  }
   

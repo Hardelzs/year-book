@@ -7,6 +7,14 @@ export default {
   ],
   theme: {
     extend: {
+      utilities: {
+        '.clip-path-login': {
+          clipPath: 'inset(0 50% 0 0)',
+        },
+        '.clip-path-signup': {
+          clipPath: 'inset(0 0 0 50%)',
+        },
+      },
       keyframes: {
         scroll: {
           "0%": { transform: "translateX(0)" },
