@@ -1,16 +1,53 @@
-import { useState } from "react";
+import { useState} from "react";
 import LoginImg from "../assets/Login.jpg";
 import SignImg from "../assets/Sign.jpg";
 import { useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { auth, googleProvider } from "../FirebaseConfig";
 
 const LoginPage = ({ onLogin}) => {
   const [isSignup, setIsSignup] = useState(false);
   const navigate = useNavigate(null)
-  const [FromData, setFormData] =useState({
+  const [formData, setFormData] =useState({
     email: "",
     password: "",
   });
   const [isNewUser, setIsNewUser] = useState(false);
+  const [error, setError] = useState("")
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value}))
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+
+    try {
+      if (isNewUser) {
+        // Signup
+        await createUserWithEmailAndPassword(auth, formData.email, formData.password);
+      } else {
+        // Login
+        await signInWithEmailAndPassword(auth, formData.email, formData.password);
+      }
+      // onLogin();
+      navigate('/YearBook') // Call parent function after login/signup
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    try {
+      await signInWithPopup(auth, googleProvider);
+      // onLogin(); // Call parent function after login
+      navigate('/YearBook')
+    } catch (err) {
+      setError(err.message)
+    }
+  }
 
   return (
     <div className="min-h-screen flex justify-center items-center font-mono">
@@ -32,7 +69,11 @@ const LoginPage = ({ onLogin}) => {
             <p className="text-sm">
               Continue with Google or enter your details.
             </p>
-            <button className="border border-black px-20 py-2 rounded-md mx-auto">
+            <button 
+            className="border border-black px-20 py-2 rounded-md mx-auto"
+            onChange={handleGoogleSignIn}
+            type="button"
+            >
               {isSignup ? "Signup with Google" : "Login with Google"}
             </button>
           </div>
@@ -44,7 +85,10 @@ const LoginPage = ({ onLogin}) => {
               type="email"
               id="email"
               placeholder="example@gmail.com"
+              value={formData.email}
+              onChange={handleChange}
               className="border border-black rounded-md bg-transparent p-2 w-full text-sm focus:outline-none font-mono"
+              required
             />
 
             <label htmlFor="password">Password</label>
@@ -52,6 +96,7 @@ const LoginPage = ({ onLogin}) => {
               type="password"
               id="password"
               placeholder="********"
+              value={formData.password}
               className="border border-black rounded-md bg-transparent p-2 w-full text-sm focus:outline-none font-mono"
             />
 
