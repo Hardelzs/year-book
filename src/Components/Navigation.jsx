@@ -3,7 +3,7 @@ import { useState } from "react";
 import { CgClose, CgProfile } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
 
-const Navigation = ({ onLogout }) => {
+const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
@@ -115,7 +115,7 @@ const Navigation = ({ onLogout }) => {
                     <a
                       href="#"
                       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                      onClick={onLogout}
+                      onClick={() => navigate("/")}
                     >
                       Sign out
                     </a>
