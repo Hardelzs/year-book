@@ -51,7 +51,7 @@ const LoginPage = () => {
       <div className={`flex gap-20 max-w-5xl w-full p-4  ${isSignup ? "flex-row-reverse" : ""}`}>
         
         {/* Image Section */}
-        <div className={`flex-shrink-0 ${isSignup ? "w-[100%]" : "w-1/3"}`}>
+        <div className={`flex-shrink-0 ${isSignup ? "w-1/2" : "w-1/2"}`}>
           <img
             src={isSignup ? SignImg : LoginImg}
             alt="Auth Page"

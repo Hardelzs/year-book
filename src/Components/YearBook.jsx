@@ -71,9 +71,9 @@ const YearBook = () => {
     }
   };
 
-  const handleLogin = (userData) => {
-    setUser(userData);
-  };
+  // const handleLogin = (userData) => {
+  //   setUser(userData);
+  // };
 
   const handleLogout = () => {
     setUser(null);
