@@ -9,6 +9,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import LoginImg from "../assets/Login.jpg";
 import SignImg from "../assets/Sign.jpg";
+import { FaGoogle } from "react-icons/fa";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -84,11 +85,11 @@ const LoginPage = () => {
 
             {/* Google Sign-In Button */}
             <button
-              className="border border-black px-20 py-2 rounded-md mx-auto"
+              className="border border-black px-20 py-2 rounded-md mx-auto flex justify-center items-center gap-2"
               onClick={handleGoogleSignIn}
               type="button"
             >
-              {isSignup ? "Signup with Google" : "Login with Google"}
+             <FaGoogle className="text-2xl"/> {isSignup ? "Signup with Google" : "Login with Google"}
             </button>
           </div>
 
@@ -121,7 +122,7 @@ const LoginPage = () => {
             <p 
               className="text-right text-sm cursor-pointer text-blue-600"
               onClick={() => setShowResetModal(true)}
-            >Forgot Password?</p>
+            >{isSignup ? "" : "Forget password"}</p>
 
             {/* Submit Button */}
             <button type="submit" className="border border-black w-full py-2 rounded-md mt-6 mx-auto">
