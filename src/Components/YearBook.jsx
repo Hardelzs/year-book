@@ -26,7 +26,7 @@ const YearBook = () => {
     const route = idToComponentMap[entry.id];
     if (route) {
       navigate(route);
-  
+
       if (user) {
         const userRef = doc(db, "users", user.uid);
         await setDoc(userRef, { lastEntry: entry.id }, { merge: true });
@@ -35,11 +35,25 @@ const YearBook = () => {
       console.error(`No route found for ID: ${entry.id}`);
     }
   };
-  
 
   const [slideIndex, setSlideIndex] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [user, setUser] = useState(null);
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const user = auth.currentUser;
+      if (user) {
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+        if (userDoc.exists()) {
+          setUserData(userDoc.data());
+        }
+      }
+    };
+
+    fetchUserData;
+  });
 
   const showSlides = (n) => {
     if (n > diaryData.entries.length) {
@@ -93,7 +107,6 @@ const YearBook = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slideIndex]);
 
-
   return (
     <div>
       {/* Header Section */}
@@ -119,11 +132,22 @@ const YearBook = () => {
           >
             <IoSearchSharp />
           </button>
+
+          {userData ? (
+            <div className="mt-4">
+              <p className="text-lg">Username: {userData.username}</p>
+              <p className="text-lg">Name: {userData.name}</p>
+              <p className="text-lg">Email: {userData.email}</p>
+              <p className="text-lg">Phone: {userData.phone}</p>
+            </div>
+          ) : (
+            <p>Loading user data...</p>
+          )}
         </div>
         {/* Profile Icon */}
 
         {/* sidebar  */}
-        <Navigation user={user} onLogout={handleLogout} />
+        <Navigation user={userData} onLogout={handleLogout} />
       </div>
 
       {/* Diary Entries Section */}

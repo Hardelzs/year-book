@@ -3,15 +3,14 @@ import { useState } from "react";
 import { CgClose, CgProfile } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
 
-const Navigation = () => {
+const Navigation = ({ userData }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-
 
   const toggleSidebar = () => setIsOpen(!isOpen);
   const toggleDropdown = () => setDropdownOpen(!isDropdownOpen);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <>
@@ -44,9 +43,16 @@ const Navigation = () => {
                 alt="User"
                 className="w-24 h-24 rounded-full mb-4"
               />
-              {/* <h2 className="text-xl font-bold">{user.name}</h2> */}
-              {/* <p>{user.username}</p> */}
-              {/* <p>{user.email}</p> */}
+              {userData ? (
+                <div className="mt-4">
+                  <p className="text-lg">Username: {userData.username}</p>
+                  <p className="text-lg">Name: {userData.name}</p>
+                  <p className="text-lg">Email: {userData.email}</p>
+                  <p className="text-lg">Phone: {userData.phone}</p>
+                </div>
+              ) : (
+                <p>Loading user data...</p>
+              )}
             </div>
 
             {/* Dropdown Button */}
@@ -79,7 +85,9 @@ const Navigation = () => {
               {/* Dropdown Menu */}
               <div
                 id="dropdown"
-                className={`z-10 ${isDropdownOpen ? "block" : "hidden"} w-full divide-y divide-gray-100 rounded-lg shadow-sm`}
+                className={`z-10 ${
+                  isDropdownOpen ? "block" : "hidden"
+                } w-full divide-y divide-gray-100 rounded-lg shadow-sm`}
               >
                 <ul
                   className="py-2 text-sm text-gray-700 dark:text-gray-200"
@@ -100,7 +108,6 @@ const Navigation = () => {
                       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                     >
                       Settings
-      
                     </a>
                   </li>
                   <li>
@@ -125,8 +132,8 @@ const Navigation = () => {
 
               {/* Additional Option */}
               <button className="text-white w-full hover:ring-2 active:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex gap-12 items-center">
-                Option 2 {" "}
-              <svg
+                Option 2{" "}
+                <svg
                   className="w-2.5 h-2.5 ml-3"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
