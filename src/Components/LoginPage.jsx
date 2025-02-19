@@ -1,26 +1,22 @@
 import { useState } from "react";
-import { auth, googleProvider } from "../FirebaseConfig";
-import { 
-  signInWithEmailAndPassword, 
-  createUserWithEmailAndPassword, 
-  signInWithPopup, 
-  sendPasswordResetEmail 
-} from "firebase/auth";
+import { auth, googleProvider, db } from "../FirebaseConfig";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import LoginImg from "../assets/Login.jpg";
 import SignImg from "../assets/Sign.jpg";
-import { FaGoogle } from "react-icons/fa";
 
 const LoginPage = () => {
   const navigate = useNavigate();
   const [isSignup, setIsSignup] = useState(false);
   const [formData, setFormData] = useState({
+    username: "",
+    name: "",
+    phone: "",
     email: "",
     password: "",
   });
   const [error, setError] = useState("");
-  const [resetEmail, setResetEmail] = useState("");
-  const [showResetModal, setShowResetModal] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,10 +29,15 @@ const LoginPage = () => {
 
     try {
       if (isSignup) {
-        // Signup
-        await createUserWithEmailAndPassword(auth, formData.email, formData.password);
+        const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
+        const user = userCredential.user;
+        await setDoc(doc(db, "users", user.uid), {
+          username: formData.username,
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+        });
       } else {
-        // Login
         await signInWithEmailAndPassword(auth, formData.email, formData.password);
       }
       navigate("/YearBook"); // Navigate after login/signup
@@ -47,18 +48,18 @@ const LoginPage = () => {
 
   const handleGoogleSignIn = async () => {
     try {
-      await signInWithPopup(auth, googleProvider);
+      const userCredential = await signInWithPopup(auth, googleProvider);
+      const user = userCredential.user;
+      const userDoc = await getDoc(doc(db, "users", user.uid));
+      if (!userDoc.exists()) {
+        await setDoc(doc(db, "users", user.uid), {
+          username: user.displayName || "",
+          name: user.displayName || "",
+          phone: "",
+          email: user.email,
+        });
+      }
       navigate("/YearBook");
-    } catch (err) {
-      setError(err.message);
-    }
-  };
-
-  const handlePasswordReset = async () => {
-    try {
-      await sendPasswordResetEmail(auth, resetEmail);
-      alert("Password reset email sent! Check your inbox.");
-      setShowResetModal(false);
     } catch (err) {
       setError(err.message);
     }
@@ -69,7 +70,7 @@ const LoginPage = () => {
       <div className={`flex gap-20 max-w-5xl w-full p-4  ${isSignup ? "flex-row-reverse" : ""}`}>
         
         {/* Image Section */}
-        <div className={`flex-shrink-0 w-1/2`}>
+        <div className={`flex-shrink-0 ${isSignup ? "w-1/2" : "w-1/2"}`}>
           <img
             src={isSignup ? SignImg : LoginImg}
             alt="Auth Page"
@@ -85,16 +86,56 @@ const LoginPage = () => {
 
             {/* Google Sign-In Button */}
             <button
-              className="border border-black px-20 py-2 rounded-md mx-auto flex justify-center items-center gap-2"
+              className="border border-black px-20 py-2 rounded-md mx-auto"
               onClick={handleGoogleSignIn}
               type="button"
             >
-             <FaGoogle className="text-2xl"/> {isSignup ? "Signup with Google" : "Login with Google"}
+              {isSignup ? "Signup with Google" : "Login with Google"}
             </button>
           </div>
 
           {/* Form Fields */}
           <form className="flex flex-col space-y-2 mt-6" onSubmit={handleSubmit}>
+            {isSignup && (
+              <>
+                <label htmlFor="username">Username</label>
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  placeholder="Your Username"
+                  value={formData.username}
+                  onChange={handleChange}
+                  className="border border-black rounded-md bg-transparent p-2 w-full text-sm focus:outline-none font-mono"
+                  required
+                />
+
+                <label htmlFor="name">Full Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="John Doe"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="border border-black rounded-md bg-transparent p-2 w-full text-sm focus:outline-none font-mono"
+                  required
+                />
+
+                <label htmlFor="phone">Phone Number</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="+1234567890"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="border border-black rounded-md bg-transparent p-2 w-full text-sm focus:outline-none font-mono"
+                  required
+                />
+              </>
+            )}
+
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -119,10 +160,7 @@ const LoginPage = () => {
               required
             />
 
-            <p 
-              className="text-right text-sm cursor-pointer text-blue-600"
-              onClick={() => setShowResetModal(true)}
-            >{isSignup ? "" : "Forget password"}</p>
+            <p className="text-right text-sm cursor-pointer">Forgot Password?</p>
 
             {/* Submit Button */}
             <button type="submit" className="border border-black w-full py-2 rounded-md mt-6 mx-auto">
@@ -145,28 +183,6 @@ const LoginPage = () => {
           {error && <p className="text-red-500 text-center mt-2">{error}</p>}
         </div>
       </div>
-
-      {/* Password Reset Modal */}
-      {showResetModal && (
-        <div className="fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-50">
-          <div className="bg-white p-6 rounded-md shadow-md w-96">
-            <h2 className="text-xl font-bold mb-2">Reset Password</h2>
-            <p className="text-sm mb-4">Enter your email to receive a reset link.</p>
-            <input
-              type="email"
-              placeholder="Enter your email"
-              value={resetEmail}
-              onChange={(e) => setResetEmail(e.target.value)}
-              className="w-full p-2 border rounded-md mb-4"
-              required
-            />
-            <div className="flex justify-end space-x-2">
-              <button className="px-4 py-2 bg-gray-500 text-white rounded-md" onClick={() => setShowResetModal(false)}>Cancel</button>
-              <button className="px-4 py-2 bg-blue-500 text-white rounded-md" onClick={handlePasswordReset}>Reset</button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
