@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { auth, googleProvider } from "../FirebaseConfig";
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { 
+  signInWithEmailAndPassword, 
+  createUserWithEmailAndPassword, 
+  signInWithPopup, 
+  sendPasswordResetEmail 
+} from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import LoginImg from "../assets/Login.jpg";
 import SignImg from "../assets/Sign.jpg";
@@ -13,6 +18,8 @@ const LoginPage = () => {
     password: "",
   });
   const [error, setError] = useState("");
+  const [resetEmail, setResetEmail] = useState("");
+  const [showResetModal, setShowResetModal] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -46,12 +53,22 @@ const LoginPage = () => {
     }
   };
 
+  const handlePasswordReset = async () => {
+    try {
+      await sendPasswordResetEmail(auth, resetEmail);
+      alert("Password reset email sent! Check your inbox.");
+      setShowResetModal(false);
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
   return (
     <div className="min-h-screen flex justify-center items-center font-mono">
       <div className={`flex gap-20 max-w-5xl w-full p-4  ${isSignup ? "flex-row-reverse" : ""}`}>
         
         {/* Image Section */}
-        <div className={`flex-shrink-0 ${isSignup ? "w-1/2" : "w-1/2"}`}>
+        <div className={`flex-shrink-0 w-1/2`}>
           <img
             src={isSignup ? SignImg : LoginImg}
             alt="Auth Page"
@@ -101,7 +118,10 @@ const LoginPage = () => {
               required
             />
 
-            <p className="text-right text-sm cursor-pointer">Forgot Password?</p>
+            <p 
+              className="text-right text-sm cursor-pointer text-blue-600"
+              onClick={() => setShowResetModal(true)}
+            >Forgot Password?</p>
 
             {/* Submit Button */}
             <button type="submit" className="border border-black w-full py-2 rounded-md mt-6 mx-auto">
@@ -124,6 +144,28 @@ const LoginPage = () => {
           {error && <p className="text-red-500 text-center mt-2">{error}</p>}
         </div>
       </div>
+
+      {/* Password Reset Modal */}
+      {showResetModal && (
+        <div className="fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-50">
+          <div className="bg-white p-6 rounded-md shadow-md w-96">
+            <h2 className="text-xl font-bold mb-2">Reset Password</h2>
+            <p className="text-sm mb-4">Enter your email to receive a reset link.</p>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={resetEmail}
+              onChange={(e) => setResetEmail(e.target.value)}
+              className="w-full p-2 border rounded-md mb-4"
+              required
+            />
+            <div className="flex justify-end space-x-2">
+              <button className="px-4 py-2 bg-gray-500 text-white rounded-md" onClick={() => setShowResetModal(false)}>Cancel</button>
+              <button className="px-4 py-2 bg-blue-500 text-white rounded-md" onClick={handlePasswordReset}>Reset</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
