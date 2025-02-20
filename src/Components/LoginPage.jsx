@@ -10,6 +10,7 @@ import { doc, setDoc, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import LoginImg from "../assets/Login.jpg";
 import SignImg from "../assets/Sign.jpg";
+import { FaGoogle } from "react-icons/fa";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -118,11 +119,11 @@ const LoginPage = () => {
 
             {/* Google Sign-In Button */}
             <button
-              className="border border-black px-20 py-2 rounded-md mx-auto"
+              className={`px-20 py-2 rounded-md mx-auto flex justify-center items-center gap-2 ${isSignup ? "bg-[#d7c2b4]" : "border border-black"}`}
               onClick={handleGoogleSignIn}
               type="button"
             >
-              {isSignup ? "Signup with Google" : "Login with Google"}
+              <FaGoogle className="text-2xl"/> {isSignup ? "Signup with Google" : "Login with Google"}
             </button>
           </div>
 
@@ -199,13 +200,13 @@ const LoginPage = () => {
               className="text-right text-sm cursor-pointer text-blue-600"
               onClick={() => setShowResetModal(true)}
             >
-              Forgot Password?
+              {isSignup ? "" : "Forget Password"}
             </p>
 
             {/* Submit Button */}
             <button
               type="submit"
-              className="border border-black w-full py-2 rounded-md mt-6 mx-auto"
+              className={` w-full py-2 rounded-md mt-6 mx-auto ${isSignup ? "bg-[#e6b191]" : "border border-black"}`}
             >
               {isSignup ? "Signup" : "Login"}
             </button>
