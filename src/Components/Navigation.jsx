@@ -4,6 +4,8 @@ import { CgClose, CgProfile } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
 
 const Navigation = ({ userData }) => {
+  // console.log("User in navigation", userData);
+  
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
@@ -54,6 +56,8 @@ const Navigation = ({ userData }) => {
                 <p>Loading user data...</p>
               )}
             </div>
+           
+            
 
             {/* Dropdown Button */}
             <div className="mt-10 flex flex-col gap-5">

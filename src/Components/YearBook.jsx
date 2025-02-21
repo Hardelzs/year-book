@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SiOrganicmaps } from "react-icons/si";
 import Navigation from "./Navigation";
-import { doc, setDoc, getDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { db, auth } from "../FirebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
 
