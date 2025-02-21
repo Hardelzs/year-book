@@ -4,8 +4,7 @@ import { CgClose, CgProfile } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
 
 const Navigation = ({ userData }) => {
-  console.log("User in navigation", userData);
-  
+
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
@@ -23,7 +22,13 @@ const Navigation = ({ userData }) => {
           onClick={toggleSidebar}
           className="cursor-pointer hover:text-gray-500 text-[#151a21]"
         />
-        {/* {user.username} */}
+        {userData ? (
+          <div>
+            <p>{userData.username}</p>
+          </div>
+        ) : (
+          <p></p>
+        )}
       </div>
 
       {/* Sidebar */}
@@ -41,7 +46,7 @@ const Navigation = ({ userData }) => {
           <div className="mt-4 px-6">
             <div className="flex flex-col items-center">
               <img
-                // src={user.image || "https://via.placeholder.com/100"}
+                // src={userData.image || "https://via.placeholder.com/100"}
                 alt="User"
                 className="w-24 h-24 rounded-full mb-4"
               />
@@ -56,8 +61,6 @@ const Navigation = ({ userData }) => {
                 <p>Loading user data...</p>
               )}
             </div>
-           
-            
 
             {/* Dropdown Button */}
             <div className="mt-10 flex flex-col gap-5">

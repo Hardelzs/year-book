@@ -96,13 +96,6 @@ const YearBook = () => {
     }
   };
 
-  // const handleLogin = (userData) => {
-  //   setUser(userData);
-  // };
-
-  // const handleLogout = () => {
-  //   setUser(null);
-  // };
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -143,16 +136,6 @@ const YearBook = () => {
             <IoSearchSharp />
           </button>
 
-          {userData ? (
-            <div className="mt-4">
-              <p className="text-lg">Username: {userData.username}</p>
-              <p className="text-lg">Name: {userData.name}</p>
-              <p className="text-lg">Email: {userData.email}</p>
-              <p className="text-lg">Phone: {userData.phone}</p>
-            </div>
-          ) : (
-            <p>Loading user data...</p>
-          )}
         </div>
         {/* Profile Icon */}
 
