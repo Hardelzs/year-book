@@ -157,7 +157,7 @@ const YearBook = () => {
         {/* Profile Icon */}
 
         {/* sidebar  */}
-        <Navigation user={userData} />
+        <Navigation userData={userData} />
       </div>
 
       {/* Diary Entries Section */}

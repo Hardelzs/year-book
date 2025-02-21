@@ -4,7 +4,7 @@ import { CgClose, CgProfile } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
 
 const Navigation = ({ userData }) => {
-  // console.log("User in navigation", userData);
+  console.log("User in navigation", userData);
   
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
