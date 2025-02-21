@@ -5,8 +5,9 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SiOrganicmaps } from "react-icons/si";
 import Navigation from "./Navigation";
-import { doc, setDoc, getDoc,} from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 import { db, auth } from "../FirebaseConfig";
+import { onAuthStateChanged } from "firebase/auth";
 
 const YearBook = () => {
   const navigate = useNavigate();
@@ -23,14 +24,10 @@ const YearBook = () => {
   };
 
   const handleNavigation = async (entry) => {
+    console.log("Navigating to entry ID:", entry.id);
     const route = idToComponentMap[entry.id];
     if (route) {
       navigate(route);
-
-      if (user) {
-        const userRef = doc(db, "users", user.uid);
-        await setDoc(userRef, { lastEntry: entry.id }, { merge: true });
-      }
     } else {
       console.error(`No route found for ID: ${entry.id}`);
     }
@@ -38,7 +35,7 @@ const YearBook = () => {
 
   const [slideIndex, setSlideIndex] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
@@ -52,8 +49,22 @@ const YearBook = () => {
       }
     };
 
-    fetchUserData;
+    fetchUserData();
   });
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        getDoc(doc(db, "users", user.uid)).then((userDoc) => {
+          if (userDoc.exists()) {
+            setUserData(userDoc.data());
+          }
+        });
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   const showSlides = (n) => {
     if (n > diaryData.entries.length) {
@@ -89,9 +100,9 @@ const YearBook = () => {
   //   setUser(userData);
   // };
 
-  const handleLogout = () => {
-    setUser(null);
-  };
+  // const handleLogout = () => {
+  //   setUser(null);
+  // };
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -104,7 +115,6 @@ const YearBook = () => {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slideIndex]);
 
   return (
@@ -147,7 +157,7 @@ const YearBook = () => {
         {/* Profile Icon */}
 
         {/* sidebar  */}
-        <Navigation user={userData} onLogout={handleLogout} />
+        <Navigation user={userData} />
       </div>
 
       {/* Diary Entries Section */}
