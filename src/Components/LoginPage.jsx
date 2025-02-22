@@ -137,12 +137,18 @@ const LoginPage = () => {
 
             {/* Google Sign-In Button */}
             <button
-              className={`px-20 py-2 rounded-md mx-auto flex justify-center items-center gap-2 ${isSignup ? "bg-[#d7c2b4]" : "border border-black"}`}
+              className={`px-20 py-2 rounded-md mx-auto flex justify-center items-center gap-2 ${
+                isSignup ? "bg-[#d7c2b4]" : "border border-black"
+              }`}
               onClick={handleGoogleSignIn}
               type="button"
             >
-              <FaGoogle className="text-2xl"/> {isSignup ? "Signup with Google" : "Login with Google"}
+              <FaGoogle className="text-2xl" />{" "}
+              {isSignup ? "Signup with Google" : "Login with Google"}
             </button>
+
+            {/* Display Error Message */}
+            {error && <p className="text-red-500 text-center mt-2">{error}</p>}
           </div>
 
           {/* Form Fields */}
@@ -224,7 +230,9 @@ const LoginPage = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              className={` w-full py-2 rounded-md mt-6 mx-auto ${isSignup ? "bg-[#e6b191]" : "border border-black"}`}
+              className={` w-full py-2 rounded-md mt-6 mx-auto ${
+                isSignup ? "bg-[#e6b191]" : "border border-black"
+              }`}
             >
               {isSignup ? "Signup" : "Login"}
             </button>
@@ -240,19 +248,17 @@ const LoginPage = () => {
               {isSignup ? "Login" : "Sign Up for free"}
             </span>
           </p>
-
-          {/* Display Error Message */}
-          {error && <p className="text-red-500 text-center mt-2">{error}</p>}
         </div>
       </div>
 
-      
       {/* Password Reset Modal */}
       {showResetModal && (
         <div className="fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-50">
           <div className="bg-white p-6 rounded-md shadow-md w-96">
             <h2 className="text-xl font-bold mb-2">Reset Password</h2>
-            <p className="text-sm mb-4">Enter your email to receive a reset link.</p>
+            <p className="text-sm mb-4">
+              Enter your email to receive a reset link.
+            </p>
             <input
               type="email"
               placeholder="Enter your email"
@@ -262,8 +268,18 @@ const LoginPage = () => {
               required
             />
             <div className="flex justify-end space-x-2">
-              <button className="px-4 py-2 bg-gray-500 text-white rounded-md" onClick={() => setShowResetModal(false)}>Cancel</button>
-              <button className="px-4 py-2 bg-blue-500 text-white rounded-md" onClick={handlePasswordReset}>Reset</button>
+              <button
+                className="px-4 py-2 bg-gray-500 text-white rounded-md"
+                onClick={() => setShowResetModal(false)}
+              >
+                Cancel
+              </button>
+              <button
+                className="px-4 py-2 bg-blue-500 text-white rounded-md"
+                onClick={handlePasswordReset}
+              >
+                Reset
+              </button>
             </div>
           </div>
         </div>
