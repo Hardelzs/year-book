@@ -37,7 +37,7 @@ const LoginPage = () => {
       alert("Password reset email sent! Check your inbox.");
       setShowResetModal(false);
     } catch (err) {
-      setError(err.message);
+      setError("Failed to send reset email. Please try again");
     }
   };
 
@@ -68,7 +68,25 @@ const LoginPage = () => {
       }
       navigate("/YearBook"); // Navigate after login/signup
     } catch (err) {
-      setError(err.message);
+      switch (err.code) {
+        case "auth/invalid-credential":
+          setError("Invalid email or password. Please try again.");
+          break;
+        case "auth/user-not-found":
+          setError("No account found with this email.");
+          break;
+        case "auth/wrong-password":
+          setError("Incorrect password. Try again.");
+          break;
+        case "auth/email-already-in-use":
+          setError("This email is already registered. Try logging in.");
+          break;
+        case "auth/too-many-requests":
+          setError("Too many attempts. Please try again later.");
+          break;
+        default:
+          setError("Something went wrong. Please try again.");
+      }
     }
   };
 
@@ -87,7 +105,7 @@ const LoginPage = () => {
       }
       navigate("/YearBook");
     } catch (err) {
-      setError(err.message);
+      setError("Failed to sign in with Google. Please try again.");
     }
   };
 
