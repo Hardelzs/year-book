@@ -24,7 +24,8 @@ const Profile = () => {
       {/* Header Section */}
       <div className="flex justify-between items-center p-4 bg-opacity-80 shadow-lg text-[#151a21]">
         {/* Icon and Brand Name */}
-        <div className="flex items-center gap-2 text-3xl font-bold">
+        <div className="flex items-center gap-2 text-3xl font-bold cursor-pointer"
+        onClick={() => navigate('/YearBook')}>
           <FaBookBookmark />
           <p className="font-mono">YearBook</p>
         </div>
