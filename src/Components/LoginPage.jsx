@@ -36,6 +36,7 @@ const LoginPage = () => {
       await sendPasswordResetEmail(auth, resetEmail);
       alert("Password reset email sent! Check your inbox.");
       setShowResetModal(false);
+    // eslint-disable-next-line no-unused-vars
     } catch (err) {
       setError("Failed to send reset email. Please try again");
     }
@@ -104,6 +105,7 @@ const LoginPage = () => {
         });
       }
       navigate("/YearBook");
+    // eslint-disable-next-line no-unused-vars
     } catch (err) {
       setError("Failed to sign in with Google. Please try again.");
     }

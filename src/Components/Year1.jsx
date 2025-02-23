@@ -80,7 +80,7 @@ const Year1 = () => {
       <div className="absolute top-3 bg-gray-200 rounded-lg flex p-2 gap-10">
         <input
           type="text"
-          placeholder="Icon"
+          placeholder="🪟 + •"
           value={newDay.icon}
           onChange={(e) => setNewDay({ ...newDay, icon: e.target.value })}
           className="h-3 focus:outline-none"
