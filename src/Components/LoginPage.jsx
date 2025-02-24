@@ -114,21 +114,21 @@ const LoginPage = () => {
   return (
     <div className="min-h-screen flex justify-center items-center font-mono">
       <div
-        className={`flex gap-20 max-w-5xl w-full p-4  ${
+        className={`md-flex gap-20 max-w-5xl w-full   ${
           isSignup ? "flex-row-reverse" : ""
         }`}
       >
         {/* Image Section */}
-        <div className={`flex-shrink-0 ${isSignup ? "w-1/2" : "w-1/2"}`}>
+        <div className={`flex-shrink-0 ${isSignup ? "w-full  -mt-10" : "w-1/2"}`}>
           <img
             src={isSignup ? SignImg : LoginImg}
             alt="Auth Page"
-            className="max-h-[80vh] rounded-md object-cover w-full"
+            className="max-h-[80vh] md-rounded-md object-cover w-full"
           />
         </div>
 
         {/* Form Section */}
-        <div className="flex flex-col justify-center w-full">
+        <div className="flex flex-col justify-center w-full p-4">
           <div className="text-center space-y-2">
             <h1 className="text-4xl">
               {isSignup ? "Signup Here!" : "Welcome Back!"}
