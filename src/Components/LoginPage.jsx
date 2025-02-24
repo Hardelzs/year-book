@@ -119,7 +119,7 @@ const LoginPage = () => {
         }`}
       >
         {/* Image Section */}
-        <div className={`flex-shrink-0 ${isSignup ? "w-full  -mt-10" : "w-1/2"}`}>
+        <div className={`flex-shrink-0 ${isSignup ? "w-full h-10 -mt-40" : "w-1/2"}`}>
           <img
             src={isSignup ? SignImg : LoginImg}
             alt="Auth Page"
@@ -128,7 +128,7 @@ const LoginPage = () => {
         </div>
 
         {/* Form Section */}
-        <div className="flex flex-col justify-center w-full p-4">
+        <div className="flex flex-col justify-center w-full p-4 mt-80">
           <div className="text-center space-y-2">
             <h1 className="text-4xl">
               {isSignup ? "Signup Here!" : "Welcome Back!"}
