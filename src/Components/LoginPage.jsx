@@ -36,7 +36,7 @@ const LoginPage = () => {
       await sendPasswordResetEmail(auth, resetEmail);
       alert("Password reset email sent! Check your inbox.");
       setShowResetModal(false);
-    // eslint-disable-next-line no-unused-vars
+      // eslint-disable-next-line no-unused-vars
     } catch (err) {
       setError("Failed to send reset email. Please try again");
     }
@@ -105,7 +105,7 @@ const LoginPage = () => {
         });
       }
       navigate("/YearBook");
-    // eslint-disable-next-line no-unused-vars
+      // eslint-disable-next-line no-unused-vars
     } catch (err) {
       setError("Failed to sign in with Google. Please try again.");
     }
@@ -114,21 +114,27 @@ const LoginPage = () => {
   return (
     <div className="min-h-screen flex justify-center items-center font-mono">
       <div
-        className={`md-flex gap-20 max-w-5xl w-full   ${
-          isSignup ? "flex-row-reverse" : ""
+        className={`flex-col md:flex md:flex-row gap-20 max-w-5xl w-full ${
+          isSignup ? "md:flex-row-reverse " : ""
         }`}
       >
         {/* Image Section */}
-        <div className={`flex-shrink-0  ${isSignup ? "w-full h-10 -mt-40" : "w-full h-5 -mt-40 "}`}>
+        <div
+          className={`flex-shrink-0  ${
+            isSignup
+              ? "md:w-1/2"
+              : "md:w-1/2"
+          }`}
+        >
           <img
             src={isSignup ? SignImg : LoginImg}
             alt="Auth Page"
-            className="max-h-[80vh] md-rounded-md object-cover w-full"
+            className="max-h-[80vh] md:rounded-md rounded-none  object-cover"
           />
         </div>
 
         {/* Form Section */}
-        <div className="flex flex-col justify-center w-full p-4 mt-80">
+        <div className="flex flex-col justify-center w-full p-4">
           <div className="text-center space-y-2">
             <h1 className="text-4xl">
               {isSignup ? "Signup Here!" : "Welcome Back!"}
