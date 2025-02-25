@@ -55,13 +55,13 @@ const Year1 = () => {
         ⬅ Back to Yearbook
       </button>
       <h1 className="text-2xl font-bold mb-6">Year 1: {days.length} Days</h1>
-      <div className="grid grid-cols-4 md:grid-cols-7 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-7 gap-4">
         {days.map((day) => (
           <div
             key={day.id}
             className={`transition-all duration-75 cursor-pointer flex items-center justify-center rounded-lg ${
               activeDay === day.id
-                ? "bg-blue-400 md:ml-96 ml-52 mt-32 w-96 h-96 absolute"
+                ? "bg-blue-400 md:ml-96 ml-40 h-40 w-40 mt-52 md:mt-32 md:w-96 md:h-96 absolute"
                 : "bg-gray-200 w-40 h-40"
             }`}
             onClick={() => handleDayClick(day)}
@@ -77,7 +77,7 @@ const Year1 = () => {
           </div>
         ))}
       </div>
-      <div className="absolute top-3 bg-gray-200 rounded-lg flex p-2 gap-10">
+      <div className="absolute  top-3 md:bg-gray-200 rounded-lg md:flex p-2 grid gap-10">
         <input
           type="text"
           placeholder="🪟 + •"
