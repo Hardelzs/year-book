@@ -51,8 +51,11 @@ const Year1 = () => {
 
   return (
     <div className="flex flex-col items-center mt-16">
-      <button onClick={() => navigate("/YearBook")} className="absolute top-5 left-5 bg-gray-300 px-4 py-2 rounded-lg hover:bg-gray-400">
+      <button onClick={() => navigate("/YearBook")} className="absolute hidden md:block top-5 left-5 bg-gray-300 px-4 py-2 rounded-lg hover:bg-gray-400">
         ⬅ Back to Yearbook
+      </button>
+      <button onClick={() => navigate("/YearBook")} className="absolute md:hidden top-5 left-1 bg-gray-300 px-4 py-2 rounded-lg hover:bg-gray-400">
+        ←
       </button>
       <h1 className="text-2xl font-bold mb-6">Year 1: {days.length} Days</h1>
       <div className="grid grid-cols-4 md:grid-cols-7 gap-4 mt-20 md:mt-0">
@@ -61,7 +64,7 @@ const Year1 = () => {
             key={day.id}
             className={`transition-all duration-75 cursor-pointer flex items-center justify-center rounded-lg ${
               activeDay === day.id
-                ? "bg-blue-400 md:ml-96 ml-40 h-40 w-40 mt-52 md:mt-32 md:w-96 md:h-96 absolute"
+                ? "bg-blue-400  ml-24 h-40 w-40 mt-40 md:ml-96 p-3 md:mt-32 md:w-96 md:h-96 absolute"
                 : "bg-gray-200 w-20 h-20 md:w-40 md:h-40"
             }`}
             onClick={() => handleDayClick(day)}
@@ -69,7 +72,7 @@ const Year1 = () => {
             {activeDay === day.id ? (
               <div>
                 <p className="text-lg">{day.text}</p>
-                <button onClick={() => handleDeleteDay(day.id)} className="absolute top-0 right-5 text-2xl bg-green-400 w-10 h-10 hover:text-red-700">x</button>
+                <button  onClick={() => handleDeleteDay(day.id)} className="absolute top-0 right-5 text-2xl bg-green-400 w-10 h-10 hover:text-red-700">x</button>
               </div>
             ) : (
               <span className="text-4xl">{day.icon}</span>
