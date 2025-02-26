@@ -71,7 +71,7 @@ const Navigation = ({ userData }) => {
           </div>
           <div
             className="px-6 py-3 mt-auto hover:bg-gray-700 flex items-center cursor-pointer"
-            onClick={() => navigate("buymeacoffee.com/adewaleezee")}
+            href="buymeacoffee.com/adewaleezee"
           >
             <GoPeople className="mr-2" />
             YearBook Support
