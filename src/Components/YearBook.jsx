@@ -113,9 +113,9 @@ const YearBook = () => {
   return (
     <div>
       {/* Header Section */}
-      <div className="flex justify-between items-center p-4 bg-opacity-80 shadow-lg text-[#151a21]">
+      <div className="flex text justify-between items-center p-4 bg-opacity-80 shadow-lg text-[#151a21]">
         {/* Icon and Brand Name */}
-        <div className="flex items-center gap-2 text-3xl font-bold">
+        <div className="flex text-1xl items-center md:gap-2 md:text-3xl font-bold">
           <FaBookBookmark />
           <p className="font-mono">YearBook</p>
         </div>
@@ -123,7 +123,7 @@ const YearBook = () => {
         <div className="flex gap-2 items-center">
           <input
             type="text"
-            className="border border-black bg-transparent text-[#151a21] px-3 py-1 rounded-full focus:outline-none"
+            className="border border-black bg-transparent text-[#151a21] w-52 md:w-96 px-3 py-1 rounded-full focus:outline-none"
             placeholder="Search Year Book"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
@@ -157,7 +157,7 @@ const YearBook = () => {
             >
               <div
                 className={`flex-shrink-0 w-80 h-60 rounded-2xl bg-[#151111b7] justify-center items-center flex mx-auto cursor-pointer ${
-                  slideIndex === index + 1 ? "scale-110 w-96 h-80" : ""
+                  slideIndex === index + 1 ? "scale-110 md:w-96 h-80" : ""
                 }`}
                 onClick={() => handleNavigation(entry)}
               >
