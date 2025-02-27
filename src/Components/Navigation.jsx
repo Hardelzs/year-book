@@ -31,7 +31,7 @@ const Navigation = ({ userData }) => {
           {/* Profile Section */}
           <div className="flex flex-col items-center p-4 border-b border-gray-600">
             <img
-              src={userData?.image || "https://via.placeholder.com/100"}
+              src={userData?.image || "https://x.com/yabaleftonline/status/1895040284167221633"}
               alt="User"
               className="w-20 h-20 rounded-full border border-gray-500"
             />
