@@ -41,16 +41,16 @@ const Navigation = ({ userData }) => {
 
           {/* Navigation Links */}
           <ul className="py-2 rounded-sm border-b border-gray-500">
-            <li className="px-4 py-3 hover:bg-gray-700 cursor-pointer" onClick={() => navigate("/profile")}>
+            <li className="px-4 py-3 hover:bg-gray-400 rounded-md cursor-pointer" onClick={() => navigate("/profile")}>
               Your Profile
             </li>
-            <li className="px-4 py-3 hover:bg-gray-700 cursor-pointer" onClick={() => navigate("/repositories")}>
+            <li className="px-4 py-3 hover:bg-gray-400 rounded-md cursor-pointer" onClick={() => navigate("/repositories")}>
               Your Repositories
             </li>
-            <li className="px-4 py-3 hover:bg-gray-700 cursor-pointer" onClick={() => navigate("/projects")}>
+            <li className="px-4 py-3 hover:bg-gray-400 rounded-md cursor-pointer" onClick={() => navigate("/projects")}>
               Your Projects
             </li>
-            <li className="px-4 py-3 hover:bg-gray-700 cursor-pointer" onClick={() => navigate("/settings")}>
+            <li className="px-4 py-3 hover:bg-gray-400 rounded-md cursor-pointer" onClick={() => navigate("/settings")}>
               Settings
             </li>
           </ul>
@@ -59,19 +59,19 @@ const Navigation = ({ userData }) => {
           {/* Documentation  */}
           <div className="border-b border-gray-500 py-3">
           <div
-            className="px-6 py-3 mt-auto hover:bg-gray-700 flex items-center cursor-pointer"
+            className="px-6 py-3 mt-auto hover:bg-gray-400 flex items-center rounded-md cursor-pointer"
           >
             <CgWebsite className="mr-2" />
             YearBook Website
           </div>
           <div
-            className="px-6 py-3 mt-auto hover:bg-gray-700 flex items-center cursor-pointer"
+            className="px-6 py-3 mt-auto hover:bg-gray-400 flex items-center rounded-md cursor-pointer"
           >
             <GrDocumentText className="mr-2" />
             YearBook Docs
           </div>
           <div
-            className="px-6 py-3 mt-auto hover:bg-gray-700 flex items-center cursor-pointer"
+            className="px-6 py-3 mt-auto hover:bg-gray-400 flex items-center rounded-md cursor-pointer"
             href="buymeacoffee.com/adewaleezee"
           >
             <GoPeople className="mr-2" />
@@ -82,7 +82,7 @@ const Navigation = ({ userData }) => {
 
           {/* Sign Out Button */}
           <div
-            className="px-6 py-3 mt-auto hover:bg-red-500 flex items-center cursor-pointer"
+            className="px-6 py-3 mt-auto hover:bg-red-500 flex items-center rounded-md cursor-pointer"
             onClick={() => navigate("/")}
           >
             <FaSignOutAlt className="mr-2" />
