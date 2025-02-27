@@ -16,12 +16,13 @@ const Navigation = ({ userData }) => {
   return (
     <>
       {/* Profile Icon to Open Sidebar */}
-      <div className="relative flex justify-center items-center">
+      <div className="relative flex flex-col justify-center items-center">
         <CgProfile
           size={30}
           onClick={toggleSidebar}
           className="cursor-pointer hover:text-gray-500 text-[#151a21]"
         />
+        {userData?.username || "User"}
       </div>
 
       {/* Sidebar */}
