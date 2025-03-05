@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { GrDocumentText } from "react-icons/gr";
 import { CgWebsite } from "react-icons/cg";
 import { GoPeople } from "react-icons/go";
+import { CiSettings } from "react-icons/ci";
 
 const Navigation = ({ userData }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,16 +42,17 @@ const Navigation = ({ userData }) => {
 
           {/* Navigation Links */}
           <ul className="py-2 rounded-sm border-b border-gray-500">
-            <li className="px-4 py-3 hover:bg-[#c2c0b9] rounded-md cursor-pointer" onClick={() => navigate("/profile")}>
+            <li className="px-4 py-3 hover:bg-[#c2c0b9] rounded-md cursor-pointer flex justify-center items-center" onClick={() => navigate("/profile")}>
               Your Profile
             </li>
-            <li className="px-4 py-3 hover:bg-[#c2c0b9] rounded-md cursor-pointer" onClick={() => navigate("/repositories")}>
+            <li className="px-4 py-3 hover:bg-[#c2c0b9] rounded-md cursor-pointer flex justify-center items-center" onClick={() => navigate("/repositories")}>
               Your Repositories
             </li>
-            <li className="px-4 py-3 hover:bg-[#c2c0b9] rounded-md cursor-pointer" onClick={() => navigate("/projects")}>
+            <li className="px-4 py-3 hover:bg-[#c2c0b9] rounded-md cursor-pointer flex justify-center items-center" onClick={() => navigate("/projects")}>
               Your Projects
             </li>
-            <li className="px-4 py-3 hover:bg-[#c2c0b9] rounded-md cursor-pointer" onClick={() => navigate("/settings")}>
+            <li className="px-4 py-3 hover:bg-[#c2c0b9] rounded-md cursor-pointer flex justify-center items-center" onClick={() => navigate("/settings")}>
+            <CiSettings />
               Settings
             </li>
           </ul>
