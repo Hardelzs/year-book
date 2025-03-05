@@ -43,9 +43,9 @@ const Navigation = ({ userData }) => {
           {/* Navigation Links */}
           <div className="border-b border-gray-500 py-3">
           <div
-            className="px-6 py-3 mt-auto hover:bg-[#c2c0b9] flex items-center rounded-md cursor-pointer"
+            className="px-5 py-3 mt-auto hover:bg-[#c2c0b9] flex items-center rounded-md cursor-pointer"
           >
-            <CgWebsite className="mr-2" />
+            <CgProfile className="mr-2" size={22}/>
             Your Profile
           </div>
           <div
