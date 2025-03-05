@@ -41,21 +41,35 @@ const Navigation = ({ userData }) => {
           </div>
 
           {/* Navigation Links */}
-          <ul className="py-2 rounded-sm border-b border-gray-500">
-            <li className="px-4 py-3 hover:bg-[#c2c0b9] rounded-md cursor-pointer flex justify-center items-center" onClick={() => navigate("/profile")}>
-              Your Profile
-            </li>
-            <li className="px-4 py-3 hover:bg-[#c2c0b9] rounded-md cursor-pointer flex justify-center items-center" onClick={() => navigate("/repositories")}>
-              Your Repositories
-            </li>
-            <li className="px-4 py-3 hover:bg-[#c2c0b9] rounded-md cursor-pointer flex justify-center items-center" onClick={() => navigate("/projects")}>
-              Your Projects
-            </li>
-            <li className="px-4 py-3 hover:bg-[#c2c0b9] rounded-md cursor-pointer flex justify-center items-center" onClick={() => navigate("/settings")}>
-            <CiSettings />
-              Settings
-            </li>
-          </ul>
+          <div className="border-b border-gray-500 py-3">
+          <div
+            className="px-6 py-3 mt-auto hover:bg-[#c2c0b9] flex items-center rounded-md cursor-pointer"
+          >
+            <CgWebsite className="mr-2" />
+            Your Profile
+          </div>
+          <div
+            className="px-6 py-3 mt-auto hover:bg-[#c2c0b9] flex items-center rounded-md cursor-pointer"
+          >
+            <GrDocumentText className="mr-2" />
+            Your Repositories
+          </div>
+          <div
+            className="px-6 py-3 mt-auto hover:bg-[#c2c0b9] flex items-center rounded-md cursor-pointer"
+            href="buymeacoffee.com/adewaleezee"
+          >
+            <GoPeople className="mr-2" />
+            Your Projects
+          </div>
+          <div
+            className="px-5 py-3 mt-auto hover:bg-[#c2c0b9] flex items-center rounded-md cursor-pointer"
+            href="buymeacoffee.com/adewaleezee"
+            onClick={() => navigate("/settings")}
+          >
+            <CiSettings className="mr-2" size={26}/>
+            Settings
+          </div>
+          </div>
 
 
           {/* Documentation  */}
