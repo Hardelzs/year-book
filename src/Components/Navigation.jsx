@@ -44,8 +44,10 @@ const Navigation = ({ userData }) => {
           <div className="border-b border-gray-500 py-3">
           <div
             className="px-5 py-3 mt-auto hover:bg-[#c2c0b9] flex items-center rounded-md cursor-pointer"
+            onClick={() => navigate("/Profile")}
           >
             <CgProfile className="mr-2" size={22}/>
+
             Your Profile
           </div>
           <div

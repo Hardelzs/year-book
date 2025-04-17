@@ -35,17 +35,25 @@ const YearBook = () => {
 
   const [slideIndex, setSlideIndex] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
-  // const [user, setUser] = useState(null);
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
     const fetchUserData = async () => {
-      const user = auth.currentUser;
-      if (user) {
-        const userDoc = await getDoc(doc(db, "users", user.uid));
-        if (userDoc.exists()) {
-          setUserData(userDoc.data());
+      try {
+        const user = auth.currentUser;
+        console.log("Current User:", auth.currentUser);
+        if (user) {
+          const userDoc = await getDoc(doc(db, "users", user.uid));
+          if (userDoc.exists()) {
+            setUserData(userDoc.data());
+          } else {
+            console.error("No such document!");
+          }
+        } else {
+          console.error("User is not authenticated.");
         }
+      } catch (error) {
+        console.error("Error fetching user data:", error.message);
       }
     };
 
@@ -96,7 +104,6 @@ const YearBook = () => {
     }
   };
 
-
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "ArrowLeft") {
@@ -135,7 +142,6 @@ const YearBook = () => {
           >
             <IoSearchSharp />
           </button>
-
         </div>
         {/* Profile Icon */}
 
