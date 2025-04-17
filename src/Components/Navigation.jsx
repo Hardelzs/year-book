@@ -23,7 +23,13 @@ const Navigation = ({ userData }) => {
           onClick={toggleSidebar}
           className="cursor-pointer hover:text-gray-500 text-[#151a21]"
         />
-        {userData?.username || "User"}
+                {userData ? (
+          <div>
+            <p>{userData.username}</p>
+          </div>
+        ) : (
+          <p>Loading ...</p>
+        )}
       </div>
 
       {/* Sidebar */}
